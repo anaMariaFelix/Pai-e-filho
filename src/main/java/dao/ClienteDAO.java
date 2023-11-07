@@ -33,11 +33,17 @@ public class ClienteDAO implements ClienteInterfaceDAO{
 
 	@Override
 	public void salvarCliente(ClienteDTO clienteDTO) throws ClienteExistenteException {
-		for (ClienteDTO cliente : BancoDeDados.getInstance().getClientes()) {
-			if (cliente.getEmail().equals(clienteDTO.getEmail())) {
+		
+		Iterator<ClienteDTO> clientes = new ConcretIterator(BancoDeDados.getInstance().getClientes());
+		
+		while(clientes.hasNext()) {
+			ClienteDTO cliente = clientes.next();
+			
+			if(cliente.getEmail().equals(clienteDTO.getEmail())) {
 				throw new ClienteExistenteException();
 			}
 		}
+		
 		BancoDeDados.getInstance().getClientes().add(clienteDTO);
 		Persistencia.getInstance().salvarBanco(BancoDeDados.getInstance(), Constantes.NOME_ARQUIVO_XML);
 			

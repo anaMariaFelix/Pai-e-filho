@@ -9,6 +9,8 @@ import execoesPersonalizadas.FuncionarioNaoEncontradoException;
 public interface FuncionarioInterfaceDAO {
 
 	void salvarFuncionario(FuncionarioDTO dto) throws FuncionarioExistenteException;
+	
 	FuncionarioDTO recuperarFuncionario(String email) throws FuncionarioNaoEncontradoException;
+	
 	ArrayList<FuncionarioDTO> recuperaTodosFuncionarios();
 }

@@ -34,8 +34,13 @@ public class FuncionarioDAO implements FuncionarioInterfaceDAO{
 
 	@Override
 	public void salvarFuncionario(FuncionarioDTO funcionarioDTO) throws FuncionarioExistenteException{
-		for (FuncionarioDTO funcionario : BancoDeDados.getInstance().getFuncionarios()) {
-			if (funcionario.getEmail().equals(funcionarioDTO.getEmail())) {
+		
+		Iterator<FuncionarioDTO> funcionarios = new ConcretIterator(BancoDeDados.getInstance().getFuncionarios());
+		
+		while(funcionarios.hasNext()) {
+			FuncionarioDTO funcionario = funcionarios.next();
+			
+			if(funcionario.getEmail().equals(funcionarioDTO.getEmail())) {
 				throw new FuncionarioExistenteException();
 			}
 		}

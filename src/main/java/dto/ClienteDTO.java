@@ -16,7 +16,6 @@ public class ClienteDTO{
 		this.notificacao = notificacao;
 	}
 	
-	//Ana feia
 	public String getNome() {
 		return nome;
 	}

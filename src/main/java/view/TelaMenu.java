@@ -9,10 +9,7 @@ import javax.swing.JLabel;
 
 public class TelaMenu extends JanelaPadrao{
 	private static final long serialVersionUID = 1L;
-	private JButton botaoCadastros;
-	private JButton botaoservicos;
-	private JButton botaolistagem;
-	
+
 	public TelaMenu() {
 		criarLabel();
 		criarBotao();
@@ -23,26 +20,27 @@ public class TelaMenu extends JanelaPadrao{
 	public void criarBotao() {
 		JButton botaoCadastros = new JButton("Cadastros");
 		botaoCadastros.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		botaoCadastros.setBounds(531, 189, 265, 68);
+		botaoCadastros.setBounds(531, 169, 265, 68);
 		getContentPane().add(botaoCadastros);
 		
-		JButton botaoservicos = new JButton("Serviços");		//seviços vai ficar aqui ou na tela de listagens?
+		JButton botaoservicos = new JButton("Serviços");
 		botaoservicos.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		botaoservicos.setBounds(531, 290, 265, 68);
+		botaoservicos.setBounds(531, 272, 265, 68);
 		getContentPane().add(botaoservicos);
 		
 		JButton botaolistagem = new JButton("Listagem");
 		botaolistagem.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		botaolistagem.setBounds(531, 397, 265, 68);
+		botaolistagem.setBounds(531, 373, 265, 68);
 		getContentPane().add(botaolistagem);
+		
+		JButton botaoEmails = new JButton("Emails");
+		botaoEmails.setToolTipText("Promoções,Notificações e Novidades");
+		botaoEmails.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		botaoEmails.setBounds(531, 474, 265, 68);
+		getContentPane().add(botaoEmails);
 	}
 	
 	public void criarLabel() {
-		
-//		ImageIcon imagem = new ImageIcon("Imagens/PartyHelper.png");
-//		JLabel rotulo = new JLabel(imagem);
-//		rotulo.setBounds(77, 189, 370, 256);
-//		getContentPane().add(rotulo);
 		
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon("Imagens/fotoLogin.png"));
