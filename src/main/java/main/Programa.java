@@ -2,10 +2,9 @@ package main;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-
-import view.TelaLogin;
-
 import javax.swing.UnsupportedLookAndFeelException;
+
+import view.TelaMenu;
 
 public class Programa {
 	public static void main(String[] args) {
@@ -27,7 +26,7 @@ public class Programa {
 			// handle exception
 		}
 
-		new TelaLogin();
+		new TelaMenu();
 
 		
 	}
