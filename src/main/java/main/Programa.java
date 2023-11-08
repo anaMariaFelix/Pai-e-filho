@@ -27,7 +27,6 @@ public class Programa {
 			// handle exception
 		}
 
-		
 		if (AdministradorController.getInstance().recuperarAdministrador() != null) {
 			new view.TelaLogin();
 
