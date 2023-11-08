@@ -1,15 +1,14 @@
 package view;
-import javax.swing.JLabel;
-import java.awt.Font;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Listagem extends JanelaPadrao{
-	private JButton pedido;
-	private JButton clinteFuncionario;
-	private JButton servico;
-	
 	
 	public Listagem() {
 		criarJLabel();
@@ -27,26 +26,103 @@ public class Listagem extends JanelaPadrao{
 		
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon("Imagens/fotoLogin.png"));
-		img.setBounds(74, 204, 394, 256);
+		img.setBounds(77, 189, 394, 256);
 		getContentPane().add(img);
 		
 	}
 	
 	public void criarJButton() {
-		pedido = new JButton("Pedido");
+		JButton pedido = new JButton("Pedido");
 		pedido.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		pedido.setBounds(534, 219, 265, 68);
+		pedido.setBounds(531, 169, 265, 68);
+		pedido.addActionListener(new OuvinteBotaoPedido(this));
 		getContentPane().add(pedido);
 		
-		clinteFuncionario = new JButton("Cliente/Funcionários");
-		clinteFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		clinteFuncionario.setBounds(534, 317, 265, 68);
-		getContentPane().add(clinteFuncionario);
+		JButton clienteFuncionario = new JButton("Cliente/Funcionários");
+		clienteFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		clienteFuncionario.setBounds(531, 373, 265, 68);
+		clienteFuncionario.addActionListener(new OuvinteBotaoClientesFuncionario(this));
+		getContentPane().add(clienteFuncionario);
 		
-		servico = new JButton("Serviços");
+		JButton servico = new JButton("Serviços");
 		servico.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		servico.setBounds(534, 412, 265, 68);
+		servico.setBounds(531, 272, 265, 68);
+		servico.addActionListener(new OuvinteBotaoServico(this));
 		getContentPane().add(servico);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnVoltar.setBounds(531, 474, 265, 68);
+		btnVoltar.addActionListener(new OuvinteBotaoVoltar(this));
+		getContentPane().add(btnVoltar);
+	}
+	
+	
+	private class OuvinteBotaoPedido implements ActionListener{
+
+		private Listagem janela;
+		
+		public OuvinteBotaoPedido(Listagem listagem) {
+			this.janela = listagem;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.janela.dispose();
+			new ListagemPedido();
+		}
+		
+	}
+	
+	
+	private class OuvinteBotaoClientesFuncionario implements ActionListener{
+		
+		private Listagem janela;
+		
+		public OuvinteBotaoClientesFuncionario(Listagem listagem) {
+			this.janela = listagem;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.janela.dispose();
+			new ListagemClienteFuncionario();
+		}
+		
+	}
+	
+	
+	private class OuvinteBotaoServico implements ActionListener{
+		
+		private Listagem janela;
+		
+		public OuvinteBotaoServico(Listagem listagem) {
+			this.janela = listagem;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.janela.dispose();
+			new Servicos();
+		}
+		
+	}
+	
+	
+	private class OuvinteBotaoVoltar implements ActionListener{
+		
+		private Listagem janela;
+		
+		public OuvinteBotaoVoltar(Listagem listagem) {
+			this.janela = listagem;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.janela.dispose();
+			new TelaMenu();
+		}
+		
 	}
 	
 	
