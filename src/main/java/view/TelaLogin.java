@@ -1,16 +1,29 @@
 package view;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+
+import controller.AdministradorController;
+import dto.AdministradorDTO;
+import strategy.CamposNaoPreenchidosStrategy;
+import strategy.EmailInvalidoStrategy;
+import strategy.SenhaInvalidaMenorQue8Strategy;
+import strategy.SenhaInvalidaStrategy;
+import strategy.Strategy;
+import util.ValidaEmail;
+
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
 public class TelaLogin extends JanelaPadrao{
-	private JTextField campoUsuario;
+	private JTextField campoEmail;
 	private JButton botaoEntrar;
-	private JPasswordField passwordField;
+	private JPasswordField campoSenha;
 	
 	public TelaLogin() {
 		getContentPane().setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -22,6 +35,22 @@ public class TelaLogin extends JanelaPadrao{
 		setVisible(true);
 	}
 	
+	public JTextField getCampoEmail() {
+		return campoEmail;
+	}
+
+	public void setCampoEmail(JTextField campoEmail) {
+		this.campoEmail = campoEmail;
+	}
+
+	public JPasswordField getCampoSenha() {
+		return campoSenha;
+	}
+
+	public void setCampoSenha(JPasswordField campoSenha) {
+		this.campoSenha = campoSenha;
+	}
+
 	public void criarLabel() {
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon("Imagens/fotoLogin.png"));
@@ -35,11 +64,11 @@ public class TelaLogin extends JanelaPadrao{
 		senha.setBounds(480, 303, 78, 31);
 		getContentPane().add(senha);
 		
-		JLabel usuario = new JLabel("Usuario:");
-		usuario.setForeground(new Color(255, 255, 255));
-		usuario.setFont(new Font("Tahoma", Font.BOLD, 20));
-		usuario.setBounds(480, 195, 95, 25);
-		getContentPane().add(usuario);
+		JLabel email = new JLabel("Email:");
+		email.setForeground(new Color(255, 255, 255));
+		email.setFont(new Font("Tahoma", Font.BOLD, 20));
+		email.setBounds(480, 195, 95, 25);
+		getContentPane().add(email);
 		
 		JLabel login = new JLabel("Login");
 		login.setForeground(new Color(255, 255, 255));
@@ -49,21 +78,64 @@ public class TelaLogin extends JanelaPadrao{
 	}
 	
 	public void criarTextField() {
-		campoUsuario = new JTextField();
-		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		campoUsuario.setBounds(480, 231, 329, 61);
-		getContentPane().add(campoUsuario);
-		campoUsuario.setColumns(10);
+		campoEmail = new JTextField();
+		campoEmail.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		campoEmail.setBounds(480, 231, 329, 61);
+		getContentPane().add(campoEmail);
+		campoEmail.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(480, 346, 329, 61);
-		getContentPane().add(passwordField);
+		campoSenha = new JPasswordField();
+		campoSenha.setBounds(480, 346, 329, 61);
+		getContentPane().add(campoSenha);
 	}
 	
 	public void criarButton() {
+		OuvinteBotaoEntrar ouvinte = new OuvinteBotaoEntrar(this);
+		
 		botaoEntrar = new JButton("Entrar");
 		botaoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		botaoEntrar.setBounds(646, 434, 163, 43);
+		botaoEntrar.addActionListener(ouvinte);
 		getContentPane().add(botaoEntrar);
+	}
+	
+	public class OuvinteBotaoEntrar implements ActionListener {
+		private TelaLogin janela;
+		
+
+		public OuvinteBotaoEntrar(TelaLogin janela) {
+			this.janela = janela;
+			
+
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			AdministradorDTO administrador = AdministradorController.getInstance().recuperarAdministrador();
+			
+			String email = janela.getCampoEmail().getText();
+			String senha = new String(janela.getCampoSenha().getPassword());
+
+			if (senha.isEmpty() || email.isEmpty()) {
+				Strategy camposVazios = new CamposNaoPreenchidosStrategy();
+				camposVazios.mostrarErro();
+		
+			}else if(!administrador.getSenha().equals(senha)){
+				Strategy senhaInvalida = new SenhaInvalidaStrategy();
+				senhaInvalida.mostrarErro();
+				
+			}else if(!administrador.getEmail().equals(email)){
+				Strategy emailInvalido = new EmailInvalidoStrategy();
+				emailInvalido.mostrarErro();
+				
+			}else {
+				janela.dispose();
+				
+				TelaMenu telaLogin = new TelaMenu();
+				
+			}
+			
+
+		}
+
 	}
 }

@@ -20,4 +20,9 @@
       <valor>4444444444</valor>
     </dto.PedidoDTO>
   </pedidos>
+  <administrador>
+    <nome>ana</nome>
+    <email>1@1</email>
+    <senha>12345678</senha>
+  </administrador>
 </bancoDeDados.BancoDeDados>
