@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.ServicoController;
 import execoesPersonalizadas.ServicoExistenteException;
+import iterator.ConcretIterator;
+import iterator.Iterator;
 import strategy.Erros;
 import strategy.SelecioneLinhaStrategy;
 import strategy.SemInformacao;
@@ -78,15 +80,17 @@ public class Servicos extends JanelaPadrao {
 
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Serviços");
-
-		Object[] servicos = ServicoController.getInstance().recuperarServicos().toArray();
-
-		for (Object servico : servicos) {
-			Object[] linha = { servico };
-
-			modelo.addRow(linha);
-
+		
+		
+		Iterator<String> servicos = new ConcretIterator(ServicoController.getInstance().recuperarServicos());
+		
+		while (servicos.hasNext()) {
+			String servico = servicos.next();
+			
+			Object[] valor = {servico};
+			modelo.addRow(valor);	
 		}
+		
 		table = new JTable(modelo);
 		JScrollPane painelTabela = new JScrollPane(table);
 
