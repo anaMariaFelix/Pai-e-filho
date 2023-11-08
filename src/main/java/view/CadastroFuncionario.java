@@ -31,6 +31,14 @@ public class CadastroFuncionario extends JanelaPadrao {
 	private JTextField campoTelefone;
 	private JTextField campoEmail;
 	private JTextField campoCPF;
+	
+	private JButton buttonVoltar;
+	private JButton buttonSalvar;
+	
+	private JLabel CadastrarFuncionário;
+	
+	private OuvinteBotaoSalvar ouvinteSalvar;
+	private OuvinteBotaoVoltar ouvinteVoltar;
 
 	public CadastroFuncionario() {
 
@@ -41,18 +49,23 @@ public class CadastroFuncionario extends JanelaPadrao {
 	}
 
 	public void criarJbutton() {
-		JButton buttonVoltar = new JButton("Voltar");
+		ouvinteVoltar = new OuvinteBotaoVoltar(this);
+		
+		buttonVoltar = new JButton("Voltar");
 		buttonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonVoltar.setBounds(282, 501, 166, 41);
-		buttonVoltar.addActionListener(new OuvinteBotaoVoltar(this));
+		buttonVoltar.addActionListener(ouvinteVoltar);
 		getContentPane().add(buttonVoltar);
+		
+		ouvinteSalvar = new OuvinteBotaoSalvar(this);
 
-		JButton buttonSalvar = new JButton("Salvar");
+		buttonSalvar = new JButton("Salvar");
 		buttonSalvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonSalvar.setBounds(460, 501, 166, 41);
-		buttonSalvar.addActionListener(new OuvinteBotaoSalvar(this));
+		buttonSalvar.addActionListener(ouvinteSalvar);
 		getContentPane().add(buttonSalvar);
 	}
+
 
 	public void criarJTextField() {
 		campoNome = new JTextField();
@@ -94,7 +107,7 @@ public class CadastroFuncionario extends JanelaPadrao {
 	}
 
 	public void criarJLabel() {
-		JLabel CadastrarFuncionário = new JLabel("Cadastrar Funcionário");
+		CadastrarFuncionário = new JLabel("Cadastrar Funcionário");
 		CadastrarFuncionário.setForeground(Color.WHITE);
 		CadastrarFuncionário.setFont(new Font("Times New Roman", Font.BOLD, 45));
 		CadastrarFuncionário.setBounds(236, 39, 443, 47);
@@ -128,6 +141,42 @@ public class CadastroFuncionario extends JanelaPadrao {
 		img.setIcon(new ImageIcon("Imagens/marca.png"));
 		img.setBounds(711, 503, 166, 135);
 		getContentPane().add(img);
+	}
+	
+	public OuvinteBotaoSalvar getOuvinteSalvar() {
+		return ouvinteSalvar;
+	}
+
+	public OuvinteBotaoVoltar getOuvinteVoltar() {
+		return ouvinteVoltar;
+	}
+
+	public JTextField getCampoNome() {
+		return campoNome;
+	}
+
+	public JTextField getCampoTelefone() {
+		return campoTelefone;
+	}
+
+	public JTextField getCampoEmail() {
+		return campoEmail;
+	}
+
+	public JTextField getCampoCPF() {
+		return campoCPF;
+	}
+
+	public JButton getButtonVoltar() {
+		return buttonVoltar;
+	}
+
+	public JButton getButtonSalvar() {
+		return buttonSalvar;
+	}
+
+	public JLabel getCadastrarFuncionário() {
+		return CadastrarFuncionário;
 	}
 
 	private class OuvinteBotaoSalvar implements ActionListener {
@@ -166,10 +215,9 @@ public class CadastroFuncionario extends JanelaPadrao {
 				try {
 					FuncionarioController.getInstance().salvarFuncionario(funcionario);
 					JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!");
-					//JOptions de sucesso tambèm vão ser entregues com o strategy??
 					
 					janela.dispose();
-					new TelaMenu(); //Ao cadastrar é melhor ir pra tela de cadastros ou de menu??
+					new Cadastros(); 
 					
 				} catch (FuncionarioExistenteException e1) {
 					Erros.setStrategy(new FuncionarioExistenteStrategy());

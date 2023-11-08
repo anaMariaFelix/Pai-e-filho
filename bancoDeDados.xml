@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <bancoDeDados.BancoDeDados>
   <clientes/>
-  <funcionarios/>
+  <funcionarios>
+    <dto.FuncionarioDTO>
+      <nome>Emerson</nome>
+      <telefone>83 996276965</telefone>
+      <email>as@sa</email>
+      <cpf>70401600483</cpf>
+    </dto.FuncionarioDTO>
+  </funcionarios>
   <todosServicos>
     <string>PVC</string>
     <string>Letras</string>
