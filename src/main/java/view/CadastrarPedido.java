@@ -20,6 +20,7 @@ import controller.PedidoController;
 import dto.PedidoDTO;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
+import strategy.Erros;
 import util.ValidaEmail;
 
 
@@ -36,8 +37,6 @@ public class CadastrarPedido extends JanelaPadrao{
 	private JTextField campoValor;
 	
 	
-	private OuvinteBotaoSalvar ouvinteBotaoSalvar;
-	
 	public CadastrarPedido() {
 		
 		criarJTextField();
@@ -48,7 +47,15 @@ public class CadastrarPedido extends JanelaPadrao{
 		setVisible(true);
 	}
 	
+	public JComboBox getComboBoxServico() {
+		return comboBoxServico;
+	}
 	
+	public void setComboBoxServico(JComboBox comboBoxServico) {
+		this.comboBoxServico = comboBoxServico;
+	}
+
+
 	public JTextField getCampoNomeCliente() {
 		return campoNomeCliente;
 	}
@@ -124,26 +131,27 @@ public class CadastrarPedido extends JanelaPadrao{
 	}
 	
 	public void criarJcomboBox() {
-		comboBoxServico = new JComboBox();
+		
+		Object[] servico = PedidoController.getInstance().pegaServicos().toArray();
+		comboBoxServico = new JComboBox(servico);
 		comboBoxServico.setBounds(275, 354, 344, 34);
 		getContentPane().add(comboBoxServico);
-		
 	}
 	
 	public void criarJbutton() {
+		OuvinteBotaoVoltar ouvienteVoltar = new OuvinteBotaoVoltar();
 		ButtonVoltar = new JButton("Voltar");
 		ButtonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ButtonVoltar.setBounds(275, 587, 145, 34);
+		ButtonVoltar.addActionListener(ouvienteVoltar);
 		getContentPane().add(ButtonVoltar);
 		
-		ouvinteBotaoSalvar = new OuvinteBotaoSalvar(this);
+		OuvinteBotaoSalvar ouvinteBotaoSalvar = new OuvinteBotaoSalvar(this);
 		salvar = new JButton("Salvar");
 		salvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		salvar.setBounds(474, 587, 145, 34);
 		salvar.addActionListener(ouvinteBotaoSalvar);
-		getContentPane().add(salvar);
-		
-		
+		getContentPane().add(salvar);	
 	}
 	
 	public void criarJlabel() {
@@ -203,7 +211,18 @@ public class CadastrarPedido extends JanelaPadrao{
 		getContentPane().add(descricao);
 		
 	}
-	
+	private class OuvinteBotaoVoltar implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == ButtonVoltar) {
+				dispose();
+				new Cadastros();
+		
+			}
+		}
+	}
 	
 	protected class OuvinteBotaoSalvar implements ActionListener {
 		private CadastrarPedido janela;
@@ -221,31 +240,34 @@ public class CadastrarPedido extends JanelaPadrao{
 			String email = janela.getCampoEmail().getText();
 			String valor = janela.getCampoValor().getText();
 			String descricao = janela.getDescricao().getText();
+			String servico = (String) janela.getComboBoxServico().getSelectedItem();
 
 			
 			
 			if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || valor.isEmpty()
-					|| descricao.isEmpty()) {
-				CamposNaoPreenchidosStrategy camposNaoPreenchidosStrategy = new CamposNaoPreenchidosStrategy();
-				camposNaoPreenchidosStrategy.mostrarErro();
+					|| descricao.isEmpty() || servico.isEmpty()) {
+				Erros.setStrategy(new CamposNaoPreenchidosStrategy());
+				Erros.lancarErro();
 
 			} else if (!ValidaEmail.emailValidatorP(email)) {
-				EmailInvalidoStrategy emailInvalido = new EmailInvalidoStrategy();
-				emailInvalido.mostrarErro();
+				Erros.setStrategy(new EmailInvalidoStrategy());
+				Erros.lancarErro();
 			}
 					
 			else {
-				pedido = new PedidoDTO(nome,email,telefone,descricao,valor);
+				pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor);
 				PedidoController.getInstance().salvarPedido(pedido);
-				JOptionPane.showMessageDialog(janela, "Cliente cadastrado com sucesso!");
+				JOptionPane.showMessageDialog(janela, "Pedido cadastrado com sucesso!");
 				janela.dispose();
-				TelaMenu telaMenu = new TelaMenu();
+				new Cadastros();
 			} 
 
 		}
 
 			
 	}
+	
+	
 	
 	
 	

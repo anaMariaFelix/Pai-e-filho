@@ -1,15 +1,23 @@
 package view;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class TelaMenu extends JanelaPadrao{
 	private static final long serialVersionUID = 1L;
-
+	
+	private JButton botaoCadastros;
+	private JButton botaoservicos;
+	private JButton botaolistagem;
+	private JButton botaoEmails;
+	
+	
 	public TelaMenu() {
 		criarLabel();
 		criarBotao();
@@ -18,25 +26,31 @@ public class TelaMenu extends JanelaPadrao{
 	
 	
 	public void criarBotao() {
-		JButton botaoCadastros = new JButton("Cadastros");
+		OuvinteBotoesDoMenu ouviente = new OuvinteBotoesDoMenu();
+		
+		botaoCadastros = new JButton("Cadastros");
 		botaoCadastros.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		botaoCadastros.setBounds(531, 169, 265, 68);
+		botaoCadastros.addActionListener(ouviente);
 		getContentPane().add(botaoCadastros);
 		
-		JButton botaoservicos = new JButton("Serviços");
+		botaoservicos = new JButton("Serviços");
 		botaoservicos.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		botaoservicos.setBounds(531, 272, 265, 68);
+		botaoservicos.addActionListener(ouviente);
 		getContentPane().add(botaoservicos);
 		
-		JButton botaolistagem = new JButton("Listagem");
+		botaolistagem = new JButton("Listagem");
 		botaolistagem.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		botaolistagem.setBounds(531, 373, 265, 68);
+		botaolistagem.addActionListener(ouviente);
 		getContentPane().add(botaolistagem);
 		
-		JButton botaoEmails = new JButton("Emails");
+		botaoEmails = new JButton("Emails");
 		botaoEmails.setToolTipText("Promoções,Notificações e Novidades");
 		botaoEmails.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		botaoEmails.setBounds(531, 474, 265, 68);
+		botaoEmails.addActionListener(ouviente);
 		getContentPane().add(botaoEmails);
 	}
 	
@@ -54,5 +68,29 @@ public class TelaMenu extends JanelaPadrao{
 		getContentPane().add(menu);
 	}
 	
+	
+	private class OuvinteBotoesDoMenu implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == botaoCadastros) {
+				dispose();
+				new Cadastros();
+		
+			}else if(e.getSource() == botaoservicos) {
+				dispose();
+				new Servicos();
+				
+			}else if(e.getSource() == botaolistagem) {
+				dispose();
+				new Listagem();
+				
+			}else if(e.getSource() == botaoEmails) {
+				String notificacaoParaCliente = JOptionPane.showInputDialog("Qual Notificação você deseja enviar para os clientes");
+			}
+		}
+		
+	}
 
 }

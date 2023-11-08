@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.ArrayList;
-
 import bancoDeDados.BancoDeDados;
 import bancoDeDados.Persistencia;
 import dto.PedidoDTO;
@@ -57,5 +56,11 @@ public class PedidoDAO implements PedidoInterfaceDAO{
 		return BancoDeDados.getInstance().getPedidos();
 	}
 
+	@Override
+	public ArrayList<String> pegaServicos() {
+		return BancoDeDados.getInstance().getTodosServicos();
+	}
+	
+	 
 
 }

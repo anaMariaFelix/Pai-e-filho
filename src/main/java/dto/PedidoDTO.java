@@ -9,11 +9,11 @@ public class PedidoDTO{
 	private String descricao;
 	private String valor;
 	
-	public PedidoDTO(String nome, String emailCliente, String telefone, String descricao, String valor) {
+	public PedidoDTO(String nome, String emailCliente, String telefone, String servico, String descricao, String valor) {
 		this.nomeCliente = nome;
 		this.emailCliente = emailCliente;
 		this.telefone = telefone;
-		//this.servico = servico;
+		this.servico = servico;
 		this.descricao = descricao;
 		this.valor = valor;
 	}

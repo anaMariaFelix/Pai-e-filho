@@ -12,4 +12,6 @@ public interface PedidoInterfaceDAO {
 	PedidoDTO recuperarPedido(String emailCliente) throws PedidoNaoEncontradoException;
 	
 	ArrayList<PedidoDTO> recuperaTodosPedidos();
+	
+	ArrayList<String> pegaServicos();
 }

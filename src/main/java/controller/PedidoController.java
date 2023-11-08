@@ -1,8 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-
-
 import dao.PedidoDAO;
 import dto.PedidoDTO;
 import execoesPersonalizadas.PedidoNaoEncontradoException;
@@ -41,6 +39,10 @@ public class PedidoController {
 		throw new PedidoNaoEncontradoException();
 				
 	}
+	public ArrayList<String> pegaServicos(){
+		return PedidoDAO.getInstance().pegaServicos();
+	}
+	
 	
 	
 	
