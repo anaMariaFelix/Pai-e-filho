@@ -214,7 +214,7 @@ public class CadastroFuncionario extends JanelaPadrao {
 				
 				try {
 					FuncionarioController.getInstance().salvarFuncionario(funcionario);
-					JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!");
+					JOptionPane.showMessageDialog(janela, "Funcionário cadastrado com sucesso!");
 					
 					janela.dispose();
 					new Cadastros(); 

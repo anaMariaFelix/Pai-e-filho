@@ -71,8 +71,10 @@ public class FuncionarioDAO implements FuncionarioInterfaceDAO{
 		return BancoDeDados.getInstance().getFuncionarios();
 	}
 
+	@Override
 	public void removerFuncionario(FuncionarioDTO funcionarioAntigo) {
 		BancoDeDados.getInstance().getFuncionarios().remove(funcionarioAntigo);
+		Persistencia.getInstance().salvarBanco(BancoDeDados.getInstance(), Constantes.NOME_ARQUIVO_XML);
 	}
 	
 	

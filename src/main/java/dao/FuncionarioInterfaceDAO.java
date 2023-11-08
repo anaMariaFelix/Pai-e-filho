@@ -13,4 +13,6 @@ public interface FuncionarioInterfaceDAO {
 	FuncionarioDTO recuperarFuncionario(String email) throws FuncionarioNaoEncontradoException;
 	
 	ArrayList<FuncionarioDTO> recuperaTodosFuncionarios();
+	
+	void removerFuncionario(FuncionarioDTO funcionarioAntigo);
 }

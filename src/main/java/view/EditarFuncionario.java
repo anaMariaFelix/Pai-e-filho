@@ -81,7 +81,7 @@ public class EditarFuncionario{
 				
 				try {
 					FuncionarioController.getInstance().salvarFuncionario(funcionarioNovo);
-					JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!");
+					JOptionPane.showMessageDialog(janela, "Funcionário cadastrado com sucesso!");
 					
 					janela.dispose();
 					new ListagemClienteFuncionario(); 

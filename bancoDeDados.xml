@@ -16,13 +16,13 @@
     </dto.FuncionarioDTO>
   </funcionarios>
   <todosServicos>
-    <string>PVC</string>
-    <string>Letras</string>
     <string>Placas</string>
     <string>ACM</string>
     <string>Fachada</string>
     <string>Corrimão</string>
     <string>Alambrado</string>
+    <string>PVC</string>
+    <string>Letras</string>
   </todosServicos>
   <pedidos>
     <dto.PedidoDTO>
