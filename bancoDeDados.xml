@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <bancoDeDados.BancoDeDados>
   <clientes/>
-  <funcionarios>
-    <dto.FuncionarioDTO>
-      <nome>Emerson</nome>
-      <telefone>83 996276965</telefone>
-      <email>1@1</email>
-      <cpf>70401600483</cpf>
-    </dto.FuncionarioDTO>
-    <dto.FuncionarioDTO>
-      <nome>sada</nome>
-      <telefone>44 444444444</telefone>
-      <email>a@a</email>
-      <cpf>70401600483</cpf>
-    </dto.FuncionarioDTO>
-  </funcionarios>
+  <funcionarios/>
   <todosServicos>
     <string>PVC</string>
     <string>Letras</string>
@@ -26,16 +13,11 @@
   </todosServicos>
   <pedidos>
     <dto.PedidoDTO>
-      <nomeCliente>Ismael</nomeCliente>
-      <emailCliente>1@1</emailCliente>
-      <telefone>55 555555555</telefone>
-      <descricao>frgeet</descricao>
-      <valor>4444444444</valor>
+      <nomeCliente>ddfgd</nomeCliente>
+      <emailCliente>3ee@11</emailCliente>
+      <telefone>44 444444444</telefone>
+      <descricao>rfd</descricao>
+      <valor>3444</valor>
     </dto.PedidoDTO>
   </pedidos>
-  <administrador>
-    <nome>ana</nome>
-    <email>1@1</email>
-    <senha>12345678</senha>
-  </administrador>
 </bancoDeDados.BancoDeDados>
