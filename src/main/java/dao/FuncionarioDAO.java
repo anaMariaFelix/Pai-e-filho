@@ -70,6 +70,10 @@ public class FuncionarioDAO implements FuncionarioInterfaceDAO{
 	public ArrayList<FuncionarioDTO> recuperaTodosFuncionarios(){
 		return BancoDeDados.getInstance().getFuncionarios();
 	}
+
+	public void removerFuncionario(FuncionarioDTO funcionarioAntigo) {
+		BancoDeDados.getInstance().getFuncionarios().remove(funcionarioAntigo);
+	}
 	
 	
 }

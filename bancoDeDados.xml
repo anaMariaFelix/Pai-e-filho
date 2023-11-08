@@ -4,8 +4,14 @@
   <funcionarios>
     <dto.FuncionarioDTO>
       <nome>Emerson</nome>
+      <telefone>55 555555555</telefone>
+      <email>asd@asdas</email>
+      <cpf>70401600483</cpf>
+    </dto.FuncionarioDTO>
+    <dto.FuncionarioDTO>
+      <nome>Emersonnnn</nome>
       <telefone>83 996276965</telefone>
-      <email>as@sa</email>
+      <email>as@fassda</email>
       <cpf>70401600483</cpf>
     </dto.FuncionarioDTO>
   </funcionarios>

@@ -58,6 +58,11 @@ public class FuncionarioController {
 
 	}
 
+	public void removerFuncionario(FuncionarioDTO funcionarioAntigo) {
+		FuncionarioDAO.getInstance().removerFuncionario(funcionarioAntigo);
+		
+	}
+
 
 
 }

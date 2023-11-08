@@ -19,12 +19,12 @@ import util.ValidadorCPF;
 
 public class EditarFuncionario{
 	
-	private FuncionarioDTO funcionario;
+	private FuncionarioDTO funcionarioAntigo;
 	private CadastroFuncionario telaCadFuncionario;
 	
 	
 	public EditarFuncionario(FuncionarioDTO funcionario) {
-		this.funcionario = funcionario;
+		this.funcionarioAntigo = funcionario;
 		
 		
 		telaCadFuncionario = new CadastroFuncionario();
@@ -75,10 +75,12 @@ public class EditarFuncionario{
 				
 			}else {
 				
-				FuncionarioDTO funcionario = new FuncionarioDTO(nome, telefone, email, cpf);
+				FuncionarioDTO funcionarioNovo = new FuncionarioDTO(nome, telefone, email, cpf);
+				
+				FuncionarioController.getInstance().removerFuncionario(funcionarioAntigo);
 				
 				try {
-					FuncionarioController.getInstance().salvarFuncionario(funcionario);
+					FuncionarioController.getInstance().salvarFuncionario(funcionarioNovo);
 					JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!");
 					
 					janela.dispose();
