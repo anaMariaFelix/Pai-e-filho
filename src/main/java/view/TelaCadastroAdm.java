@@ -13,6 +13,7 @@ import dto.AdministradorDTO;
 import model.Administrador;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
+import strategy.Erros;
 import strategy.SenhaInvalidaMenorQue8Strategy;
 import strategy.SenhasDiferentesStrategy;
 import strategy.Strategy;
@@ -171,20 +172,20 @@ public class TelaCadastroAdm extends JanelaPadrao{
 			String confirmaSenha = new String(janela.getCampoConfirmaSenha().getPassword());
 
 			if (usuario.isEmpty() || senha.isEmpty() || email.isEmpty() || confirmaSenha.isEmpty()) {
-				Strategy camposVazios = new CamposNaoPreenchidosStrategy();
-				camposVazios.mostrarErro();
+				Erros.setStrategy(new CamposNaoPreenchidosStrategy());
+				Erros.lancarErro();
 
 			} else if (!ValidaEmail.emailValidatorP(email)) {
-				Strategy emailInvalido = new EmailInvalidoStrategy();
-				emailInvalido.mostrarErro();
+				Erros.setStrategy(new EmailInvalidoStrategy());
+				Erros.lancarErro();
 				
 			}else if(senha.length() < 8){
-				Strategy senhaInsuficiente = new SenhaInvalidaMenorQue8Strategy();
-				senhaInsuficiente.mostrarErro();
+				Erros.setStrategy(new SenhaInvalidaMenorQue8Strategy());
+				Erros.lancarErro();
 				
 			}else if(!confirmaSenha.equals(senha)){
-				Strategy confirmaSenhaInvalida = new SenhasDiferentesStrategy();
-				confirmaSenhaInvalida.mostrarErro();
+				Erros.setStrategy(new SenhasDiferentesStrategy());
+				Erros.lancarErro();
 				
 			}else {
 				AdministradorDTO administrador = new AdministradorDTO(usuario,email,senha);
@@ -194,7 +195,7 @@ public class TelaCadastroAdm extends JanelaPadrao{
 				JOptionPane.showMessageDialog(janela, "Administrador cadastrado com sucesso","Cadastramento", JOptionPane.INFORMATION_MESSAGE);
 				janela.dispose();
 				
-				TelaLogin telaLogin = new TelaLogin();
+				new TelaLogin();
 				
 			}
 			
