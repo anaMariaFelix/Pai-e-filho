@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bancoDeDados.BancoDeDados>
+  <clientes/>
+  <funcionarios/>
+  <todosServicos>
+    <string>PVC</string>
+    <string>Letras</string>
+    <string>Placas</string>
+    <string>ACM</string>
+    <string>Fachada</string>
+    <string>Corrimão</string>
+    <string>Alambrado</string>
+  </todosServicos>
+  <pedidos>
+    <dto.PedidoDTO>
+      <nomeCliente>Ismael</nomeCliente>
+      <emailCliente>1@1</emailCliente>
+      <telefone>55 555555555</telefone>
+      <descricao>frgeet</descricao>
+      <valor>4444444444</valor>
+    </dto.PedidoDTO>
+  </pedidos>
+</bancoDeDados.BancoDeDados>

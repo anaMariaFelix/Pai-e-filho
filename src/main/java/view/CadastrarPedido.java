@@ -1,13 +1,27 @@
 package view;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
+import controller.PedidoController;
+import dto.PedidoDTO;
+import strategy.CamposNaoPreenchidosStrategy;
+import strategy.EmailInvalidoStrategy;
+import util.ValidaEmail;
+
 
 public class CadastrarPedido extends JanelaPadrao{
 	private JTextField campoNomeCliente;
@@ -15,9 +29,14 @@ public class CadastrarPedido extends JanelaPadrao{
 	private JTextArea descricao;
 	
 	private JButton ButtonVoltar;
+	private JButton salvar;
+	
 	private JTextField campoEmail;
 	private JTextField campoTelefone;
 	private JTextField campoValor;
+	
+	
+	private OuvinteBotaoSalvar ouvinteBotaoSalvar;
 	
 	public CadastrarPedido() {
 		
@@ -29,6 +48,49 @@ public class CadastrarPedido extends JanelaPadrao{
 		setVisible(true);
 	}
 	
+	
+	public JTextField getCampoNomeCliente() {
+		return campoNomeCliente;
+	}
+
+	public void setCampoNomeCliente(JTextField campoNomeCliente) {
+		this.campoNomeCliente = campoNomeCliente;
+	}
+
+	public JTextField getCampoEmail() {
+		return campoEmail;
+	}
+
+	public void setCampoEmail(JTextField campoEmail) {
+		this.campoEmail = campoEmail;
+	}
+
+	public JTextField getCampoTelefone() {
+		return campoTelefone;
+	}
+
+	public void setCampoTelefone(JTextField campoTelefone) {
+		this.campoTelefone = campoTelefone;
+	}
+
+	public JTextField getCampoValor() {
+		return campoValor;
+	}
+
+	public void setCampoValor(JTextField campoValor) {
+		this.campoValor = campoValor;
+	}
+	
+
+	public JTextArea getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(JTextArea descricao) {
+		this.descricao = descricao;
+	}
+
+
 	public void criarJTextField() {
 		campoNomeCliente = new JTextField();
 		campoNomeCliente.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -42,11 +104,17 @@ public class CadastrarPedido extends JanelaPadrao{
 		campoEmail.setBounds(275, 198, 344, 34);
 		getContentPane().add(campoEmail);
 		
-		campoTelefone = new JTextField();
-		campoTelefone.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		campoTelefone.setColumns(10);
-		campoTelefone.setBounds(275, 276, 344, 34);
-		getContentPane().add(campoTelefone);
+		
+		try {
+			MaskFormatter mascaraDeData = new MaskFormatter("(##) #####-####");
+			campoTelefone = new JFormattedTextField(mascaraDeData);
+			campoTelefone.setBounds(275, 275, 344, 36);
+
+			getContentPane().add(campoTelefone);
+		} catch (ParseException e) {
+
+			e.printStackTrace();
+		}
 		
 		campoValor = new JTextField();
 		campoValor.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -59,6 +127,7 @@ public class CadastrarPedido extends JanelaPadrao{
 		comboBoxServico = new JComboBox();
 		comboBoxServico.setBounds(275, 354, 344, 34);
 		getContentPane().add(comboBoxServico);
+		
 	}
 	
 	public void criarJbutton() {
@@ -67,10 +136,14 @@ public class CadastrarPedido extends JanelaPadrao{
 		ButtonVoltar.setBounds(275, 587, 145, 34);
 		getContentPane().add(ButtonVoltar);
 		
-		JButton ButtonVoltar_1 = new JButton("Salvar");
-		ButtonVoltar_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ButtonVoltar_1.setBounds(474, 587, 145, 34);
-		getContentPane().add(ButtonVoltar_1);
+		ouvinteBotaoSalvar = new OuvinteBotaoSalvar(this);
+		salvar = new JButton("Salvar");
+		salvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		salvar.setBounds(474, 587, 145, 34);
+		salvar.addActionListener(ouvinteBotaoSalvar);
+		getContentPane().add(salvar);
+		
+		
 	}
 	
 	public void criarJlabel() {
@@ -130,4 +203,50 @@ public class CadastrarPedido extends JanelaPadrao{
 		getContentPane().add(descricao);
 		
 	}
+	
+	
+	protected class OuvinteBotaoSalvar implements ActionListener {
+		private CadastrarPedido janela;
+		private PedidoDTO pedido;
+		
+		public OuvinteBotaoSalvar(CadastrarPedido janela) {
+			this.janela = janela;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			String nome = janela.getCampoNomeCliente().getText();
+			String telefone = janela.getCampoTelefone().getText().replace("(", "").replace(")", "").replace("-", "").trim();
+			String email = janela.getCampoEmail().getText();
+			String valor = janela.getCampoValor().getText();
+			String descricao = janela.getDescricao().getText();
+
+			
+			
+			if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || valor.isEmpty()
+					|| descricao.isEmpty()) {
+				CamposNaoPreenchidosStrategy camposNaoPreenchidosStrategy = new CamposNaoPreenchidosStrategy();
+				camposNaoPreenchidosStrategy.mostrarErro();
+
+			} else if (!ValidaEmail.emailValidatorP(email)) {
+				EmailInvalidoStrategy emailInvalido = new EmailInvalidoStrategy();
+				emailInvalido.mostrarErro();
+			}
+					
+			else {
+				pedido = new PedidoDTO(nome,email,telefone,descricao,valor);
+				PedidoController.getInstance().salvarPedido(pedido);
+				JOptionPane.showMessageDialog(janela, "Cliente cadastrado com sucesso!");
+				janela.dispose();
+				TelaMenu telaMenu = new TelaMenu();
+			} 
+
+		}
+
+			
+	}
+	
+	
+	
 }

@@ -4,6 +4,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import view.CadastrarPedido;
 import view.TelaMenu;
 
 public class Programa {
@@ -26,7 +27,7 @@ public class Programa {
 			// handle exception
 		}
 
-		new TelaMenu();
+		new CadastrarPedido();
 
 		
 	}
