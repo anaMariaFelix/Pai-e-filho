@@ -1,11 +1,31 @@
 package view;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
+import controller.ClienteController;
+import dto.ClienteDTO;
+import execoesPersonalizadas.EmailJaCadastradoException;
+import strategy.CPFInvalido;
+import strategy.CamposNaoPreenchidosStrategy;
+import strategy.EmailInvalidoStrategy;
+import strategy.EmailJaExistenteStrategy;
+import strategy.Erros;
+import util.ValidaEmail;
+import util.ValidadorCPF;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.ParseException;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JSpinner;
+import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 
 public class CadastroDoCliente extends JanelaPadrao{
@@ -13,21 +33,22 @@ public class CadastroDoCliente extends JanelaPadrao{
 	private JTextField campoTelefone;
 	private JTextField campoEmail;
 	private JTextField campoCPF;
-	
+
 	private JButton botaoVoltar;
 	private JButton botaoSalvar;
-	
+
 	private JRadioButton radioButonSim;
 	private JRadioButton radioButonNao;
-	
+
 	public CadastroDoCliente() {
 		criarBotao();
 		criarLabel();
-		criarTextField();	
+		criarTextField();
+		JRadioButton();
 		setVisible(true);
 	}
-	
-	
+
+
 	public JTextField getCampoNome() {
 		return campoNome;
 	}
@@ -64,116 +85,225 @@ public class CadastroDoCliente extends JanelaPadrao{
 		return radioButonSim;
 	}
 
-	public void setRadioButonSim(JRadioButton radioButonSim) {
-		this.radioButonSim = radioButonSim;
-	}
-
 	public JRadioButton getRadioButonNao() {
 		return radioButonNao;
 	}
 
-	public void setRadioButonNao(JRadioButton radioButonNao) {
-		this.radioButonNao = radioButonNao;
-	}
-
-
 	public void criarLabel() {
-		JLabel lblNewLabel_1_1 = new JLabel("Telefone");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_1.setBounds(276, 207, 92, 22);
-		getContentPane().add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("E-mail");
-		lblNewLabel_1_2.setForeground(Color.WHITE);
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_2.setBounds(276, 296, 92, 22);
-		getContentPane().add(lblNewLabel_1_2);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("CPF");
-		lblNewLabel_1_3.setForeground(Color.WHITE);
-		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_3.setBounds(276, 385, 92, 22);
-		getContentPane().add(lblNewLabel_1_3);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Cadastrar Cliente");
-		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Times New Roman", Font.BOLD, 45));
-		lblNewLabel_2_1.setBounds(273, 36, 370, 47);
-		getContentPane().add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(276, 118, 92, 22);
-		getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Imagens/marca.png"));
-		lblNewLabel.setBounds(699, 501, 176, 104);
-		getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1_4 = new JLabel("Deseja Receber  Notificações:");
-		lblNewLabel_1_3.setForeground(Color.WHITE);
-		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_1_3.setBounds(276, 475, 309, 22);
-		getContentPane().add(lblNewLabel_1_3);
+		JLabel telefone = new JLabel("Telefone");
+		telefone.setForeground(Color.WHITE);
+		telefone.setFont(new Font("Tahoma", Font.BOLD, 20));
+		telefone.setBounds(276, 207, 92, 22);
+		getContentPane().add(telefone);
+
+		JLabel email = new JLabel("E-mail");
+		email.setForeground(Color.WHITE);
+		email.setFont(new Font("Tahoma", Font.BOLD, 20));
+		email.setBounds(276, 296, 92, 22);
+		getContentPane().add(email);
+
+		JLabel CPF = new JLabel("CPF");
+		CPF.setForeground(Color.WHITE);
+		CPF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		CPF.setBounds(276, 385, 92, 22);
+		getContentPane().add(CPF);
+
+		JLabel cadastrarCliente = new JLabel("Cadastrar Cliente");
+		cadastrarCliente.setForeground(Color.WHITE);
+		cadastrarCliente.setFont(new Font("Times New Roman", Font.BOLD, 45));
+		cadastrarCliente.setBounds(273, 36, 370, 47);
+		getContentPane().add(cadastrarCliente);
+
+		JLabel nome = new JLabel("Nome");
+		nome.setForeground(new Color(255, 255, 255));
+		nome.setFont(new Font("Tahoma", Font.BOLD, 20));
+		nome.setBounds(276, 118, 92, 22);
+		getContentPane().add(nome);
+
+		JLabel imagen = new JLabel("");
+		imagen.setIcon(new ImageIcon("Imagens/marca.png"));
+		imagen.setBounds(699, 501, 176, 104);
+		getContentPane().add(imagen);
+
+		JLabel notificacaoes = new JLabel("Deseja Receber  Notificações:");
+		notificacaoes.setForeground(Color.WHITE);
+		notificacaoes.setFont(new Font("Tahoma", Font.BOLD, 20));
+		notificacaoes.setBounds(276, 475, 309, 22);
+		getContentPane().add(notificacaoes);
 	}
-	
+
 	public void criarTextField() {
+		OuvinteDoNome ouvinte = new OuvinteDoNome();
 		campoNome = new JTextField();
 		campoNome.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		campoNome.setBounds(276, 150, 344, 47);
+		campoNome.addKeyListener(ouvinte);
 		getContentPane().add(campoNome);
 		campoNome.setColumns(10);
-		
-		campoTelefone = new JTextField();
-		campoTelefone.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		campoTelefone.setColumns(10);
-		campoTelefone.setBounds(276, 239, 344, 47);
-		getContentPane().add(campoTelefone);
-		
+
+
+		try {
+			MaskFormatter mascaraDeData = new MaskFormatter("(##)#####-####");
+			campoTelefone = new JFormattedTextField(mascaraDeData);
+			campoTelefone.setColumns(10);
+			campoTelefone.setBounds(276, 239, 344, 47);
+			getContentPane().add(campoTelefone);
+
+		} catch (ParseException e) {
+
+			e.printStackTrace();
+		}
+
 		campoEmail = new JTextField();
 		campoEmail.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		campoEmail.setColumns(10);
 		campoEmail.setBounds(276, 328, 344, 47);
 		getContentPane().add(campoEmail);
-		
-		campoCPF = new JTextField();
-		campoCPF.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		campoCPF.setColumns(10);
-		campoCPF.setBounds(276, 417, 344, 47);
-		getContentPane().add(campoCPF);
-		
+
+
+		try {
+
+			MaskFormatter mascaraDeCPF = new MaskFormatter("###.###.###-##");
+			campoCPF = new JFormattedTextField(mascaraDeCPF);
+			campoCPF.setColumns(10);
+			campoCPF.setBounds(276, 417, 344, 47);
+			getContentPane().add(campoCPF);
+
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+
 	}
-	 
+
 	public void JRadioButton() {
-		
-		JRadioButton radioButonSim = new JRadioButton("Sim");
+
+		radioButonSim = new JRadioButton("Sim");
+		radioButonSim.setSelected(true);
 		radioButonSim.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		radioButonSim.setForeground(new Color(255, 255, 255));
 		radioButonSim.setBackground(new Color(31, 38, 107));
 		radioButonSim.setBounds(276, 512, 59, 23);
 		getContentPane().add(radioButonSim);
-		
-		JRadioButton radioButonNao = new JRadioButton("Não");
+
+		radioButonNao = new JRadioButton("Não");
 		radioButonNao.setForeground(new Color(255, 255, 255));
 		radioButonNao.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		radioButonNao.setBackground(new Color(31, 38, 107));
 		radioButonNao.setBounds(353, 512, 76, 23);
 		getContentPane().add(radioButonNao);
+
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(radioButonSim);
+		bg.add(radioButonNao); 
 		
 	}
-	
+
 	public void criarBotao() {
+		OuvinteBotaoVoltar ouvinteVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		botaoVoltar.setBounds(276, 550, 166, 41);
+		botaoVoltar.addActionListener(ouvinteVoltar);
 		getContentPane().add(botaoVoltar);
+
 		
+		OuvinteBotaoSalvar ouvinteSalvar = new OuvinteBotaoSalvar(this);
 		botaoSalvar = new JButton("Salvar");
 		botaoSalvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		botaoSalvar.setBounds(452, 550, 166, 41);
+		botaoSalvar.addActionListener(ouvinteSalvar);
 		getContentPane().add(botaoSalvar);
+	}
+
+	private class OuvinteDoNome implements KeyListener {
+
+		public void keyPressed(KeyEvent e) {
+			char c = e.getKeyChar();
+			if (!Character.isLetter(c) && c != ' ') {
+
+			}
+		}
+
+		public void keyReleased(KeyEvent e) {
+
+		}
+
+		public void keyTyped(KeyEvent e) {
+			char c = e.getKeyChar();
+
+			if (!Character.isLetter(c) && c != ' ') {
+				e.consume();
+			}
+		}
+	}
+
+	private class OuvinteBotaoVoltar implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			new TelaMenu();
+
+		}
+
+	}
+
+	public String removerMacaraCampoCPF(JTextField cpf) {
+		return cpf.getText().replace(".", "").replace("-", "").trim();
+	}
+
+	protected class OuvinteBotaoSalvar implements ActionListener {
+		private CadastroDoCliente janela;
+
+		public OuvinteBotaoSalvar(CadastroDoCliente janela) {
+			this.janela = janela;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			String nome = janela.getCampoNome().getText();
+			String telefone = janela.getCampoTelefone().getText().replace("(", "").replace(")", "").replace("-", "").trim();
+			String email = janela.getCampoEmail().getText();
+			String cpf = removerMacaraCampoCPF(janela.getCampoCPF());
+			boolean notificacao = false;
+
+			if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || cpf.isEmpty()) {
+				Erros.setStrategy(new CamposNaoPreenchidosStrategy());
+				Erros.lancarErro();
+
+			} else if (!ValidaEmail.emailValidatorP(email)) {
+				Erros.setStrategy(new EmailInvalidoStrategy());
+				Erros.lancarErro();
+
+			} else if (!ValidadorCPF.isCPF(cpf)) {
+				Erros.setStrategy(new CPFInvalido());
+				Erros.lancarErro();
+
+			}else {
+				
+				if (radioButonSim.isSelected()) {
+					notificacao = true;
+
+				}
+				
+				ClienteDTO cliente = new ClienteDTO(nome,telefone,email,cpf,notificacao);
+
+				try {
+					ClienteController.getInstance().salvarCliente(cliente);
+					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso.");
+					dispose();
+					new TelaMenu();
+
+				} catch (EmailJaCadastradoException e1) {
+					Erros.setStrategy(new EmailJaExistenteStrategy());
+					Erros.lancarErro();
+					e1.getMessage();
+				}
+
+
+			}
+
+		}
+
 	}
 }

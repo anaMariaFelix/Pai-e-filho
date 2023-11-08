@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Color;
 import javax.swing.JTextField;
 
@@ -84,10 +86,12 @@ public class TelaCadastroAdm extends JanelaPadrao{
 		campoEmailUsuario.setBounds(548, 279, 232, 42);
 		getContentPane().add(campoEmailUsuario);
 		
+		OuvinteDoNome ouvinte = new OuvinteDoNome();
 		campoUsuario = new JTextField();
 		campoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		campoUsuario.setColumns(10);
 		campoUsuario.setBounds(548, 191, 232, 42);
+		campoUsuario.addKeyListener(ouvinte);
 		getContentPane().add(campoUsuario);
 	}
 	
@@ -152,6 +156,28 @@ public class TelaCadastroAdm extends JanelaPadrao{
 		botaoEntrar.addActionListener(ouvinte);
 		getContentPane().add(botaoEntrar);
 		
+	}
+	
+	private class OuvinteDoNome implements KeyListener {
+
+		public void keyPressed(KeyEvent e) {
+			char c = e.getKeyChar();
+			if (!Character.isLetter(c) && c != ' ') {
+
+			}
+		}
+
+		public void keyReleased(KeyEvent e) {
+
+		}
+
+		public void keyTyped(KeyEvent e) {
+			char c = e.getKeyChar();
+
+			if (!Character.isLetter(c) && c != ' ') {
+				e.consume();
+			}
+		}
 	}
 	
 	public class OuvinteBotaoEntrar implements ActionListener {

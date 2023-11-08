@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import bancoDeDados.BancoDeDados;
 import bancoDeDados.Persistencia;
 import dto.ClienteDTO;
-import execoesPersonalizadas.ClienteExistenteException;
+import execoesPersonalizadas.EmailJaCadastradoException;
 import execoesPersonalizadas.ClienteNaoEncontradoException;
 import iterator.ConcretIterator;
 import iterator.Iterator;
@@ -32,7 +32,7 @@ public class ClienteDAO implements ClienteInterfaceDAO{
 	}
 
 	@Override
-	public void salvarCliente(ClienteDTO clienteDTO) throws ClienteExistenteException {
+	public void salvarCliente(ClienteDTO clienteDTO) throws EmailJaCadastradoException {
 		
 		Iterator<ClienteDTO> clientes = new ConcretIterator(BancoDeDados.getInstance().getClientes());
 		
@@ -40,7 +40,7 @@ public class ClienteDAO implements ClienteInterfaceDAO{
 			ClienteDTO cliente = clientes.next();
 			
 			if(cliente.getEmail().equals(clienteDTO.getEmail())) {
-				throw new ClienteExistenteException();
+				throw new EmailJaCadastradoException();
 			}
 		}
 		

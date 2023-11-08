@@ -5,6 +5,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import controller.AdministradorController;
 import view.CadastroDoCliente;
+import view.TelaCadastroAdm;
 
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -32,7 +33,7 @@ public class Programa {
 			new view.TelaLogin();
 
 		} else {
-			new CadastroDoCliente();
+			new TelaCadastroAdm();
 		}
 	
 	}
