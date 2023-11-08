@@ -8,6 +8,7 @@ import controller.AdministradorController;
 import dto.AdministradorDTO;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
+import strategy.Erros;
 import strategy.SenhaInvalidaMenorQue8Strategy;
 import strategy.SenhaInvalidaStrategy;
 import strategy.Strategy;
@@ -116,21 +117,21 @@ public class TelaLogin extends JanelaPadrao{
 			String senha = new String(janela.getCampoSenha().getPassword());
 
 			if (senha.isEmpty() || email.isEmpty()) {
-				Strategy camposVazios = new CamposNaoPreenchidosStrategy();
-				camposVazios.mostrarErro();
-		
+				Erros.setStrategy(new CamposNaoPreenchidosStrategy());
+				Erros.lancarErro();
+				
 			}else if(!administrador.getSenha().equals(senha)){
-				Strategy senhaInvalida = new SenhaInvalidaStrategy();
-				senhaInvalida.mostrarErro();
+				Erros.setStrategy(new SenhaInvalidaStrategy());
+				Erros.lancarErro();
 				
 			}else if(!administrador.getEmail().equals(email)){
-				Strategy emailInvalido = new EmailInvalidoStrategy();
-				emailInvalido.mostrarErro();
+				Erros.setStrategy(new EmailInvalidoStrategy());
+				Erros.lancarErro();
 				
 			}else {
 				janela.dispose();
 				
-				TelaMenu telaLogin = new TelaMenu();
+				new TelaMenu();
 				
 			}
 			

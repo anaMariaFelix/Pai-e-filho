@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import dao.ClienteDAO;
 import dto.ClienteDTO;
-import execoesPersonalizadas.ClienteExistenteException;
+import execoesPersonalizadas.EmailJaCadastradoException;
 import execoesPersonalizadas.ClienteNaoEncontradoException;
 import iterator.ConcretIterator;
 import iterator.Iterator;
@@ -32,11 +32,12 @@ public class ClienteController {
 	}
 
 
-	public void salvarCliente(ClienteDTO clienteDTO) throws ClienteExistenteException{
+	public void salvarCliente(ClienteDTO clienteDTO) throws EmailJaCadastradoException{
 		try {
 			ClienteDAO.getInstance().salvarCliente(clienteDTO);
-		}catch(ClienteExistenteException e) {
-			throw new ClienteExistenteException();
+			
+		}catch(EmailJaCadastradoException e) {
+			throw new EmailJaCadastradoException();
 		}
 
 		if(clienteDTO.isNotificacao()) {

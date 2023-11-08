@@ -6,7 +6,7 @@ import bancoDeDados.BancoDeDados;
 import bancoDeDados.Persistencia;
 import dto.ClienteDTO;
 import dto.FuncionarioDTO;
-import execoesPersonalizadas.ClienteExistenteException;
+import execoesPersonalizadas.EmailJaCadastradoException;
 import execoesPersonalizadas.FuncionarioExistenteException;
 import execoesPersonalizadas.FuncionarioNaoEncontradoException;
 import iterator.ConcretIterator;
