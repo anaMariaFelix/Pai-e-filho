@@ -57,6 +57,76 @@
       <cpf>11993299408</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ana maria</nome>
+      <telefone>11993299408</telefone>
+      <email>1@76</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>felix</nome>
+      <telefone>54564654564</telefone>
+      <email>1@78yg</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>alves</nome>
+      <telefone>99999999999</telefone>
+      <email>ghj@fdc</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>maria</nome>
+      <telefone>11222222222</telefone>
+      <email>fgfgf@gfg</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>sid</nome>
+      <telefone>85478547854</telefone>
+      <email>lkj@dgkj</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>fausto</nome>
+      <telefone>21546785412</telefone>
+      <email>mju@dhj</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>alkjdhah</nome>
+      <telefone>45456455454</telefone>
+      <email>,ljkjhj@sdf</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ana felix</nome>
+      <telefone>12364878445</telefone>
+      <email>mkjghgs@qwedfghghgh</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>cansei</nome>
+      <telefone>66988547122</telefone>
+      <email>gtars@fgj</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>eu nao aguento mais</nome>
+      <telefone>45678945698</telefone>
+      <email>testando@123</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
   </clientes>
   <funcionarios>
     <dto.FuncionarioDTO>
@@ -70,6 +140,12 @@
       <telefone>83 996276965</telefone>
       <email>as@fassda</email>
       <cpf>70401600483</cpf>
+    </dto.FuncionarioDTO>
+    <dto.FuncionarioDTO>
+      <nome>ana</nome>
+      <telefone>45 874587455</telefone>
+      <email>sd@sfdgsgh</email>
+      <cpf>11993299408</cpf>
     </dto.FuncionarioDTO>
   </funcionarios>
   <todosServicos>

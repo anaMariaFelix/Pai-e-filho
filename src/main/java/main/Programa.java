@@ -7,6 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.AdministradorController;
 import view.TelaCadastroAdm;
 import view.TelaLogin;
+import view.TelaMenu;
 
 public class Programa {
 	public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class Programa {
 		}
 
 		if (AdministradorController.getInstance().recuperarAdministrador() != null) {
-			new TelaLogin();
+			new TelaMenu();
 
 		} else {
 			new TelaCadastroAdm();

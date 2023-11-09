@@ -39,6 +39,12 @@ public class CadastroDoCliente extends JanelaPadrao{
 
 	private JRadioButton radioButonSim;
 	private JRadioButton radioButonNao;
+	
+	private JLabel cadastrarCliente;
+	
+	private OuvinteBotaoVoltar ouvinteVoltar;
+	private OuvinteBotaoSalvar ouvinteSalvar;
+
 
 	public CadastroDoCliente() {
 		criarBotao();
@@ -46,6 +52,44 @@ public class CadastroDoCliente extends JanelaPadrao{
 		criarTextField();
 		JRadioButton();
 		setVisible(true);
+	}
+
+
+	public JLabel getCadastrarCliente() {
+		return cadastrarCliente;
+	}
+
+	public void setCadastrarCliente(JLabel cadastrarCliente) {
+		this.cadastrarCliente = cadastrarCliente;
+	}
+
+	public JButton getBotaoVoltar() {
+		return botaoVoltar;
+	}
+
+
+	public void setBotaoVoltar(JButton botaoVoltar) {
+		this.botaoVoltar = botaoVoltar;
+	}
+
+
+	public JButton getBotaoSalvar() {
+		return botaoSalvar;
+	}
+
+
+	public void setBotaoSalvar(JButton botaoSalvar) {
+		this.botaoSalvar = botaoSalvar;
+	}
+
+
+	public void setRadioButonSim(JRadioButton radioButonSim) {
+		this.radioButonSim = radioButonSim;
+	}
+
+
+	public void setRadioButonNao(JRadioButton radioButonNao) {
+		this.radioButonNao = radioButonNao;
 	}
 
 
@@ -89,6 +133,22 @@ public class CadastroDoCliente extends JanelaPadrao{
 		return radioButonNao;
 	}
 
+	public OuvinteBotaoVoltar getOuvinteVoltar() {
+		return ouvinteVoltar;
+	}
+
+	public void setOuvinteVoltar(OuvinteBotaoVoltar ouvinteVoltar) {
+		this.ouvinteVoltar = ouvinteVoltar;
+	}
+
+	public OuvinteBotaoSalvar getOuvinteSalvar() {
+		return ouvinteSalvar;
+	}
+
+	public void setOuvinteSalvar(OuvinteBotaoSalvar ouvinteSalvar) {
+		this.ouvinteSalvar = ouvinteSalvar;
+	}
+
 	public void criarLabel() {
 		JLabel telefone = new JLabel("Telefone");
 		telefone.setForeground(Color.WHITE);
@@ -108,10 +168,10 @@ public class CadastroDoCliente extends JanelaPadrao{
 		CPF.setBounds(276, 385, 92, 22);
 		getContentPane().add(CPF);
 
-		JLabel cadastrarCliente = new JLabel("Cadastrar Cliente");
+		cadastrarCliente = new JLabel("Cadastrar Cliente");
 		cadastrarCliente.setForeground(Color.WHITE);
 		cadastrarCliente.setFont(new Font("Times New Roman", Font.BOLD, 45));
-		cadastrarCliente.setBounds(273, 36, 370, 47);
+		cadastrarCliente.setBounds(273, 36, 359, 47);
 		getContentPane().add(cadastrarCliente);
 
 		JLabel nome = new JLabel("Nome");
@@ -199,7 +259,7 @@ public class CadastroDoCliente extends JanelaPadrao{
 	}
 
 	public void criarBotao() {
-		OuvinteBotaoVoltar ouvinteVoltar = new OuvinteBotaoVoltar();
+		ouvinteVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar = new JButton("Voltar");
 		botaoVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		botaoVoltar.setBounds(276, 550, 166, 41);
@@ -207,7 +267,7 @@ public class CadastroDoCliente extends JanelaPadrao{
 		getContentPane().add(botaoVoltar);
 
 		
-		OuvinteBotaoSalvar ouvinteSalvar = new OuvinteBotaoSalvar(this);
+		ouvinteSalvar = new OuvinteBotaoSalvar(this);
 		botaoSalvar = new JButton("Salvar");
 		botaoSalvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		botaoSalvar.setBounds(452, 550, 166, 41);
@@ -292,7 +352,7 @@ public class CadastroDoCliente extends JanelaPadrao{
 					ClienteController.getInstance().salvarCliente(cliente);
 					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso.");
 					dispose();
-					new TelaMenu();
+					new DetalharCliente(cliente);
 
 				} catch (EmailJaCadastradoException e1) {
 					Erros.setStrategy(new EmailJaExistenteStrategy());
