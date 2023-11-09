@@ -127,6 +127,83 @@
       <cpf>11993299408</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ana </nome>
+      <telefone>12231233211</telefone>
+      <email>hgfcfvcf@dsdffgc</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>a</nome>
+      <telefone>11111111111</telefone>
+      <email>111@111</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>am</nome>
+      <telefone>11111111112</telefone>
+      <email>111@112</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>maria</nome>
+      <telefone>00000000000</telefone>
+      <email>000@000</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>maria felix</nome>
+      <telefone>00000000001</telefone>
+      <email>000@001</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>felix</nome>
+      <telefone>33333333333</telefone>
+      <email>33@33</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>feliz</nome>
+      <telefone>44444444444</telefone>
+      <email>33@34</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>alves</nome>
+      <telefone>77777777777</telefone>
+      <email>77777@777777</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>alves felix</nome>
+      <telefone>77777777788</telefone>
+      <email>77777@777778</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>wilker freitas</nome>
+      <telefone>77777777777</telefone>
+      <email>667@667</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ismael feioso</nome>
+      <telefone>11111111112</telefone>
+      <email>11@4567</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
   </clientes>
   <funcionarios>
     <dto.FuncionarioDTO>
@@ -145,6 +222,12 @@
       <nome>ana</nome>
       <telefone>45 874587455</telefone>
       <email>sd@sfdgsgh</email>
+      <cpf>11993299408</cpf>
+    </dto.FuncionarioDTO>
+    <dto.FuncionarioDTO>
+      <nome>ana felix maria</nome>
+      <telefone>44 444444445</telefone>
+      <email>444@445</email>
       <cpf>11993299408</cpf>
     </dto.FuncionarioDTO>
   </funcionarios>
