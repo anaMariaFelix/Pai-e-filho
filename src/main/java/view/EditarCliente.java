@@ -18,9 +18,9 @@ import strategy.Erros;
 import util.ValidaEmail;
 import util.ValidadorCPF;
 
-public class EditarClente {
+public class EditarCliente {
 
-	public EditarClente(ClienteDTO clienteDTO) {
+	public EditarCliente(ClienteDTO clienteDTO) {
 		editarCliente(clienteDTO);
 	}
 	
@@ -29,7 +29,7 @@ public class EditarClente {
 		
 		CadastroDoCliente telaCadastroCliente = new CadastroDoCliente();
 		
-		telaCadastroCliente.getCadastrarCliente().setText("Detalhar Cliente");
+		telaCadastroCliente.getCadastrarCliente().setText("Editar Cliente");
 		
 		telaCadastroCliente.getBotaoSalvar().removeActionListener(telaCadastroCliente.getOuvinteSalvar());
 		telaCadastroCliente.getBotaoVoltar().removeActionListener(telaCadastroCliente.getOuvinteVoltar());

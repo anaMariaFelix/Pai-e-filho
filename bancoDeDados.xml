@@ -204,6 +204,27 @@
       <cpf>11993299408</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>jose</nome>
+      <telefone>44444444444</telefone>
+      <email>1@1</email>
+      <cpf>71308976437</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ismael</nome>
+      <telefone>55555555555</telefone>
+      <email>123@123</email>
+      <cpf>71308976437</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>ismaelrrrrrr</nome>
+      <telefone>83981694990</telefone>
+      <email>1@345</email>
+      <cpf>71308976437</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
   </clientes>
   <funcionarios>
     <dto.FuncionarioDTO>
@@ -241,13 +262,6 @@
     <string>Letras</string>
   </todosServicos>
   <pedidos>
-    <dto.PedidoDTO>
-      <nomeCliente>ddfgd</nomeCliente>
-      <emailCliente>3ee@11</emailCliente>
-      <telefone>44 444444444</telefone>
-      <descricao>rfd</descricao>
-      <valor>3444</valor>
-    </dto.PedidoDTO>
   </pedidos>
   <administrador>
     <nome>ana a LIDER</nome>

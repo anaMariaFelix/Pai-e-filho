@@ -14,4 +14,6 @@ public interface PedidoInterfaceDAO {
 	ArrayList<PedidoDTO> recuperaTodosPedidos();
 	
 	ArrayList<String> pegaServicos();
+	
+	void removerPedido(PedidoDTO pedido);
 }

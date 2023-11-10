@@ -25,16 +25,22 @@ import util.ValidaEmail;
 
 
 public class CadastrarPedido extends JanelaPadrao{
+	
 	private JTextField campoNomeCliente;
 	private JComboBox comboBoxServico;
 	private JTextArea descricao;
 	
-	private JButton ButtonVoltar;
-	private JButton salvar;
+	private JButton buttonVoltar;
+	private JButton buttonSalvar;
 	
 	private JTextField campoEmail;
 	private JTextField campoTelefone;
 	private JTextField campoValor;
+	
+	private JLabel CadastrarPedido;
+	
+	private OuvinteBotaoVoltar ouvienteVoltar;
+	private OuvinteBotaoSalvar ouvinteBotaoSalvar;
 	
 	
 	public CadastrarPedido() {
@@ -46,7 +52,51 @@ public class CadastrarPedido extends JanelaPadrao{
 		criarJTextArea();
 		setVisible(true);
 	}
+
 	
+	public OuvinteBotaoVoltar getOuvienteVoltar() {
+		return ouvienteVoltar;
+	}
+
+	public void setOuvienteVoltar(OuvinteBotaoVoltar ouvienteVoltar) {
+		this.ouvienteVoltar = ouvienteVoltar;
+	}
+
+	public OuvinteBotaoSalvar getOuvinteBotaoSalvar() {
+		return ouvinteBotaoSalvar;
+	}
+
+	public void setOuvinteBotaoSalvar(OuvinteBotaoSalvar ouvinteBotaoSalvar) {
+		this.ouvinteBotaoSalvar = ouvinteBotaoSalvar;
+	}
+
+	public JLabel getCadastrarPedido() {
+		return CadastrarPedido;
+	}
+
+	public void setCadastrarPedido(JLabel cadastrarPedido) {
+		CadastrarPedido = cadastrarPedido;
+	}
+	
+	public JButton getButtonVoltar() {
+		return buttonVoltar;
+	}
+
+	public void setButtonVoltar(JButton buttonVoltar) {
+		this.buttonVoltar = buttonVoltar;
+	}
+
+
+	public JButton getButtonSalvar() {
+		return buttonSalvar;
+	}
+
+
+	public void setButtonSalvar(JButton buttonSalvar) {
+		this.buttonSalvar = buttonSalvar;
+	}
+
+
 	public JComboBox getComboBoxServico() {
 		return comboBoxServico;
 	}
@@ -139,19 +189,19 @@ public class CadastrarPedido extends JanelaPadrao{
 	}
 	
 	public void criarJbutton() {
-		OuvinteBotaoVoltar ouvienteVoltar = new OuvinteBotaoVoltar();
-		ButtonVoltar = new JButton("Voltar");
-		ButtonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ButtonVoltar.setBounds(275, 587, 145, 34);
-		ButtonVoltar.addActionListener(ouvienteVoltar);
-		getContentPane().add(ButtonVoltar);
+		ouvienteVoltar = new OuvinteBotaoVoltar();
+		buttonVoltar = new JButton("Voltar");
+		buttonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		buttonVoltar.setBounds(275, 587, 145, 34);
+		buttonVoltar.addActionListener(ouvienteVoltar);
+		getContentPane().add(buttonVoltar);
 		
-		OuvinteBotaoSalvar ouvinteBotaoSalvar = new OuvinteBotaoSalvar(this);
-		salvar = new JButton("Salvar");
-		salvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		salvar.setBounds(474, 587, 145, 34);
-		salvar.addActionListener(ouvinteBotaoSalvar);
-		getContentPane().add(salvar);	
+		ouvinteBotaoSalvar = new OuvinteBotaoSalvar(this);
+		buttonSalvar = new JButton("Salvar");
+		buttonSalvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		buttonSalvar.setBounds(474, 587, 145, 34);
+		buttonSalvar.addActionListener(ouvinteBotaoSalvar);
+		getContentPane().add(buttonSalvar);	
 	}
 	
 	public void criarJlabel() {
@@ -190,7 +240,7 @@ public class CadastrarPedido extends JanelaPadrao{
 		img.setBounds(718, 492, 173, 146);
 		getContentPane().add(img);
 		
-		JLabel CadastrarPedido = new JLabel("Cadastrar Pedido");
+		CadastrarPedido = new JLabel("Cadastrar Pedido");
 		CadastrarPedido.setForeground(Color.WHITE);
 		CadastrarPedido.setFont(new Font("Times New Roman", Font.BOLD, 45));
 		CadastrarPedido.setBounds(275, 22, 344, 47);
@@ -216,7 +266,7 @@ public class CadastrarPedido extends JanelaPadrao{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			if(e.getSource() == ButtonVoltar) {
+			if(e.getSource() == buttonVoltar) {
 				dispose();
 				new Cadastros();
 		

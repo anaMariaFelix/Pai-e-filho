@@ -48,6 +48,15 @@ public class EmailObserver {
 		this.mensagem = mensagem;
 		notificacao();
 	}
+
+	public ArrayList<Observer> getClientesObserver() {
+		return clientesObserver;
+	}
+
+	public void setClientesObserver(ArrayList<Observer> clientesObserver) {
+		this.clientesObserver = clientesObserver;
+	}
+	
 	
 	
 }

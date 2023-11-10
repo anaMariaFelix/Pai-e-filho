@@ -3,11 +3,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import email.Mensageiro;
 
 public class TelaMenu extends JanelaPadrao{
 	private static final long serialVersionUID = 1L;
@@ -88,9 +91,27 @@ public class TelaMenu extends JanelaPadrao{
 				
 			}else if(e.getSource() == botaoEmails) {
 				String notificacaoParaCliente = JOptionPane.showInputDialog("Qual Notificação você deseja enviar para os clientes");
+				
+				ArrayList<String> email = new ArrayList();
+				email.add("eandrey4133@gmail.com");
+				email.add("anafelix0909@gmail.com");
+				email.add("rosivaldo.joao@academico.ifpb.edu.br");
+				
+				for(int i = 0; i < email.size();i++) {
+					Mensageiro.getInstance().setEmailCliente(email.get(i));
+					Mensageiro.getInstance().setMensagem(notificacaoParaCliente);
+					if(notificacaoParaCliente == null || email == null) {
+						dispose();
+						new TelaMenu();
+					}else {
+						Mensageiro.getInstance().run();
+					}
+					
+				}	
+				
 			}
 		}
 		
 	}
-
 }
+

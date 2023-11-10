@@ -44,6 +44,8 @@ public class PedidoController {
 	}
 	
 	
-	
+	public void removerPedido(PedidoDTO pedido) {
+		PedidoDAO.getInstance().removerPedido(pedido);
+	}
 	
 }

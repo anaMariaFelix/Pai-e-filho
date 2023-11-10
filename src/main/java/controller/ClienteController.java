@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import dao.ClienteDAO;
 import dto.ClienteDTO;
-import execoesPersonalizadas.EmailJaCadastradoException;
 import execoesPersonalizadas.ClienteNaoEncontradoException;
+import execoesPersonalizadas.EmailJaCadastradoException;
 import iterator.ConcretIterator;
 import iterator.Iterator;
 import model.Cliente;
@@ -58,6 +58,12 @@ public class ClienteController {
 		}
 
 	}
+
+	public void enviarEmail() {
+
+	}
+
+	
 
 	public ClienteDTO recuperarCliente(ClienteDTO cliente) throws ClienteNaoEncontradoException  {
 		ClienteDTO clienteDTO = ClienteDAO.getInstance().recuperarCliente(cliente.getEmail());
