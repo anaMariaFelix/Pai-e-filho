@@ -38,7 +38,7 @@ public class EditarPedido {
 		
 		
 		telaCadastrarPedido.getButtonVoltar().addActionListener(new OuvinteBotaoVoltar(telaCadastrarPedido));
-		telaCadastrarPedido.getButtonSalvar().addActionListener(new OuvinteBotaoSalvar(telaCadastrarPedido));
+		telaCadastrarPedido.getButtonSalvar().addActionListener(new OuvinteBotaoSalvar(telaCadastrarPedido,pedidoDTO));
 	}
 	
 	private class OuvinteBotaoVoltar implements ActionListener{
@@ -61,9 +61,11 @@ public class EditarPedido {
 	
 	protected class OuvinteBotaoSalvar implements ActionListener {
 		private CadastrarPedido janela;
+		private PedidoDTO pedidoAntigo;
 		
-		public OuvinteBotaoSalvar(CadastrarPedido janela) {
+		public OuvinteBotaoSalvar(CadastrarPedido janela,PedidoDTO pedidoAntigo) {
 			this.janela = janela;
+			this.pedidoAntigo = pedidoAntigo;
 		}
 
 		@Override
@@ -90,7 +92,7 @@ public class EditarPedido {
 					
 			else {
 				PedidoDTO pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor);
-				PedidoController.getInstance().removerPedido(pedido);
+				PedidoController.getInstance().removerPedido(pedidoAntigo);
 				
 				
 				PedidoController.getInstance().salvarPedido(pedido);

@@ -48,4 +48,8 @@ public class PedidoController {
 		PedidoDAO.getInstance().removerPedido(pedido);
 	}
 	
+	public void enviarEmail() {
+		
+	}
+	
 }

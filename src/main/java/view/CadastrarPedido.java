@@ -309,7 +309,7 @@ public class CadastrarPedido extends JanelaPadrao{
 				PedidoController.getInstance().salvarPedido(pedido);
 				JOptionPane.showMessageDialog(janela, "Pedido cadastrado com sucesso!");
 				janela.dispose();
-				new Cadastros();
+				new EditarPedido(pedido);
 			} 
 
 		}

@@ -262,6 +262,22 @@
     <string>Letras</string>
   </todosServicos>
   <pedidos>
+    <dto.PedidoDTO>
+      <nomeCliente>Mael</nomeCliente>
+      <emailCliente>1@1</emailCliente>
+      <telefone>22 222222222</telefone>
+      <servico>Placas</servico>
+      <descricao>sdgfg</descricao>
+      <valor>3333</valor>
+    </dto.PedidoDTO>
+    <dto.PedidoDTO>
+      <nomeCliente>Ismael</nomeCliente>
+      <emailCliente>1@1</emailCliente>
+      <telefone>22 222222222</telefone>
+      <servico>Placas</servico>
+      <descricao>sdgfg</descricao>
+      <valor>3333</valor>
+    </dto.PedidoDTO>
   </pedidos>
   <administrador>
     <nome>ana a LIDER</nome>
