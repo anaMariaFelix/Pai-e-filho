@@ -58,6 +58,7 @@ public class ServicoDAO implements ServicoDAOInterface{
 		
 	}
 
+	@Override
 	public void editarServico(int indice, String servicoEditado) {
 		String valorAntigo = BancoDeDados.getInstance().getTodosServicos().get(indice);
 		BancoDeDados.getInstance().getTodosServicos().remove(valorAntigo);

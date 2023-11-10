@@ -33,9 +33,9 @@ public class EmailObserver {
 	}
 	
 	public void notificacao() {
-		Iterator<Cliente> clientes = new ConcretIterator(clientesObserver);
+		Iterator<Observer> clientes = new ConcretIterator(clientesObserver);
 		while(clientes.hasNext()) {
-			Cliente elemento = clientes.next();
+			Cliente elemento = (Cliente) clientes.next();
 			elemento.update(this);
 		}
 	}

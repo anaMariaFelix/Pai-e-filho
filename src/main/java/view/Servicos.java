@@ -80,17 +80,16 @@ public class Servicos extends JanelaPadrao {
 
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Serviços");
-		
-		
+
 		Iterator<String> servicos = new ConcretIterator(ServicoController.getInstance().recuperarServicos());
-		
+
 		while (servicos.hasNext()) {
 			String servico = servicos.next();
-			
-			Object[] valor = {servico};
-			modelo.addRow(valor);	
+
+			Object[] valor = { servico };
+			modelo.addRow(valor);
 		}
-		
+
 		table = new JTable(modelo);
 		JScrollPane painelTabela = new JScrollPane(table);
 
@@ -149,17 +148,19 @@ public class Servicos extends JanelaPadrao {
 
 				String servicoEditado = JOptionPane.showInputDialog(this.janela, "Digite o novo nome para o serviço");
 
-				if (servicoEditado == null) {
-					Erros.setStrategy(new SemInformacao());
-					Erros.lancarErro();
+				if (servicoEditado != null) {
+					if (!servicoEditado.isEmpty()) {
+						ServicoController.getInstance().editarServico(indice, servicoEditado);
+						JOptionPane.showMessageDialog(janela, "Serviço Editado com sucesso!");
 
-				} else {
-					ServicoController.getInstance().editarServico(indice, servicoEditado);
-					JOptionPane.showMessageDialog(janela, "Serviço Editado com sucesso!");
+						table.repaint();
+						janela.dispose();
+						new Servicos();
+					}else {
+						Erros.setStrategy(new SemInformacao());
+						Erros.lancarErro();
+					}
 
-					table.repaint();
-					janela.dispose();
-					new Servicos();
 				}
 
 			}

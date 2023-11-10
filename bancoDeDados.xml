@@ -2,269 +2,52 @@
 <bancoDeDados.BancoDeDados>
   <clientes>
     <dto.ClienteDTO>
-      <nome>ana</nome>
-      <telefone>11111111111</telefone>
-      <email>3@1</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>Ismael e feio</nome>
-      <telefone>25586344521</telefone>
-      <email>IsmaelBaitola@bixona.com</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>aaa</nome>
-      <telefone>77477222777</telefone>
-      <email>3@ed</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ana</nome>
+      <nome>Ana feia</nome>
       <telefone>55555555555</telefone>
-      <email>1@7</email>
-      <cpf>11993299408</cpf>
+      <email>eandrey4133@gmail.com</email>
+      <cpf>70401600483</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
     <dto.ClienteDTO>
-      <nome>andrey e manu pra sempre</nome>
-      <telefone>52525252525</telefone>
-      <email>andrey@manuIloveYou</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>joao pai de todos</nome>
-      <telefone>11111111111</telefone>
-      <email>joaoEumBomCompanheiro@123</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>testando</nome>
-      <telefone>44444444444</telefone>
-      <email>12@3</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ismaelBaiotolao</nome>
-      <telefone>12365478894</telefone>
-      <email>feioso@oMaisFeisoDeTodos</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ana maria</nome>
-      <telefone>11993299408</telefone>
-      <email>1@76</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>felix</nome>
-      <telefone>54564654564</telefone>
-      <email>1@78yg</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>alves</nome>
-      <telefone>99999999999</telefone>
-      <email>ghj@fdc</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>maria</nome>
-      <telefone>11222222222</telefone>
-      <email>fgfgf@gfg</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>sid</nome>
-      <telefone>85478547854</telefone>
-      <email>lkj@dgkj</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>fausto</nome>
-      <telefone>21546785412</telefone>
-      <email>mju@dhj</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>alkjdhah</nome>
-      <telefone>45456455454</telefone>
-      <email>,ljkjhj@sdf</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ana felix</nome>
-      <telefone>12364878445</telefone>
-      <email>mkjghgs@qwedfghghgh</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>cansei</nome>
-      <telefone>66988547122</telefone>
-      <email>gtars@fgj</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>eu nao aguento mais</nome>
-      <telefone>45678945698</telefone>
-      <email>testando@123</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ana </nome>
-      <telefone>12231233211</telefone>
-      <email>hgfcfvcf@dsdffgc</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>a</nome>
-      <telefone>11111111111</telefone>
-      <email>111@111</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>am</nome>
-      <telefone>11111111112</telefone>
-      <email>111@112</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>maria</nome>
-      <telefone>00000000000</telefone>
-      <email>000@000</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>maria felix</nome>
-      <telefone>00000000001</telefone>
-      <email>000@001</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>felix</nome>
-      <telefone>33333333333</telefone>
-      <email>33@33</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>feliz</nome>
-      <telefone>44444444444</telefone>
-      <email>33@34</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>alves</nome>
-      <telefone>77777777777</telefone>
-      <email>77777@777777</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>alves felix</nome>
-      <telefone>77777777788</telefone>
-      <email>77777@777778</email>
-      <cpf>11993299408</cpf>
-      <notificacao>false</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>wilker freitas</nome>
-      <telefone>77777777777</telefone>
-      <email>667@667</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ismael feioso</nome>
-      <telefone>11111111112</telefone>
-      <email>11@4567</email>
-      <cpf>11993299408</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>jose</nome>
-      <telefone>44444444444</telefone>
-      <email>1@1</email>
-      <cpf>71308976437</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ismael</nome>
-      <telefone>55555555555</telefone>
-      <email>123@123</email>
-      <cpf>71308976437</cpf>
-      <notificacao>true</notificacao>
-    </dto.ClienteDTO>
-    <dto.ClienteDTO>
-      <nome>ismaelrrrrrr</nome>
-      <telefone>83981694990</telefone>
-      <email>1@345</email>
-      <cpf>71308976437</cpf>
+      <nome>AndreyLindo</nome>
+      <telefone>70480481084</telefone>
+      <email>eandrey413@gmail.com</email>
+      <cpf>70401600483</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
   </clientes>
   <funcionarios>
     <dto.FuncionarioDTO>
-      <nome>Emerson</nome>
+      <nome>andrey</nome>
+      <telefone>15 161481818</telefone>
+      <email>1@asdff</email>
+      <cpf>70401600483</cpf>
+    </dto.FuncionarioDTO>
+    <dto.FuncionarioDTO>
+      <nome>aaaaaaaa</nome>
       <telefone>55 555555555</telefone>
-      <email>asd@asdas</email>
+      <email>1231231@a</email>
       <cpf>70401600483</cpf>
     </dto.FuncionarioDTO>
     <dto.FuncionarioDTO>
-      <nome>Emersonnnn</nome>
-      <telefone>83 996276965</telefone>
-      <email>as@fassda</email>
+      <nome>andrey</nome>
+      <telefone>15 161481818</telefone>
+      <email>1@aqweqwrqwerqweq</email>
       <cpf>70401600483</cpf>
-    </dto.FuncionarioDTO>
-    <dto.FuncionarioDTO>
-      <nome>ana</nome>
-      <telefone>45 874587455</telefone>
-      <email>sd@sfdgsgh</email>
-      <cpf>11993299408</cpf>
-    </dto.FuncionarioDTO>
-    <dto.FuncionarioDTO>
-      <nome>ana felix maria</nome>
-      <telefone>44 444444445</telefone>
-      <email>444@445</email>
-      <cpf>11993299408</cpf>
     </dto.FuncionarioDTO>
   </funcionarios>
   <todosServicos>
+    <string>PVC</string>
+    <string>Letras</string>
     <string>Placas</string>
     <string>ACM</string>
     <string>Fachada</string>
     <string>Corrimão</string>
     <string>Alambrado</string>
-    <string>PVC</string>
-    <string>Letras</string>
   </todosServicos>
-  <pedidos>
-  </pedidos>
+  <pedidos/>
   <administrador>
-    <nome>ana a LIDER</nome>
+    <nome>Andrey lindo</nome>
     <email>1@1</email>
     <senha>12345678</senha>
   </administrador>

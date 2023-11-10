@@ -28,16 +28,16 @@ public class DetalharFuncionario {
 		
 		
 		telaCadFuncionario.getCampoNome().setText(funcionario.getNome());
-		telaCadFuncionario.getCampoNome().disable();
+		telaCadFuncionario.getCampoNome().setEnabled(false);
 		
 		telaCadFuncionario.getCampoTelefone().setText(funcionario.getTelefone());
-		telaCadFuncionario.getCampoTelefone().disable();
+		telaCadFuncionario.getCampoTelefone().setEnabled(false);
 		
 		telaCadFuncionario.getCampoEmail().setText(funcionario.getEmail());
-		telaCadFuncionario.getCampoEmail().disable();
+		telaCadFuncionario.getCampoEmail().setEnabled(false);
 		
 		telaCadFuncionario.getCampoCPF().setText(funcionario.getCpf());
-		telaCadFuncionario.getCampoCPF().disable();
+		telaCadFuncionario.getCampoCPF().setEnabled(false);
 		
 		telaCadFuncionario.getButtonVoltar().addActionListener(new OuvinteBotaoVoltar(telaCadFuncionario));
 		
