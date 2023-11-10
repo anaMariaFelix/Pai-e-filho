@@ -46,6 +46,14 @@ public class Mensageiro extends Thread{
 		this.mensagem = mensagem;
 	}
 	
+	@Override
+	public void start() {
+		run();
+	}
+	
+	
+	
+	@Override
 	public void run() {
 
 		Email email = new SimpleEmail();

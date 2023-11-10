@@ -6,7 +6,7 @@ public class SemInformacao implements Strategy{
 
 	@Override
 	public void mostrarErro() {
-		JOptionPane.showMessageDialog(null, "Deve ser digitado a informação");		
+		JOptionPane.showMessageDialog(null, "Você deve informar o conteúdo");	
 	}
 
 }
