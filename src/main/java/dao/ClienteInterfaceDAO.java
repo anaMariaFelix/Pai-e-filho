@@ -13,4 +13,6 @@ public interface ClienteInterfaceDAO {
 	ClienteDTO recuperarCliente(String email) throws ClienteNaoEncontradoException;
 	
 	ArrayList<ClienteDTO> recuperaTodosClientes();
+	
+	void removerClienteEditado(ClienteDTO clienteDTO);
 }

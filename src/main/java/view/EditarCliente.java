@@ -110,9 +110,11 @@ public class EditarCliente {
 				ClienteDTO cliente = new ClienteDTO(nome,telefone,email,cpf,notificacao);
 
 				try {
-					ClienteDAO.getInstance().removerClienteEditado(clienteSemEdicao);
+					ClienteController.getInstance().removerClienteEditado(clienteSemEdicao);
 					ClienteController.getInstance().salvarCliente(cliente);
+					
 					JOptionPane.showMessageDialog(null, "Cliente Editado com sucesso.");
+					
 					janela.dispose();
 					new ListagemClienteFuncionario();
 

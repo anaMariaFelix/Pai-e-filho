@@ -70,11 +70,14 @@ public class ClienteDAO implements ClienteInterfaceDAO{
 	public ArrayList<ClienteDTO> recuperaTodosClientes(){
 		return BancoDeDados.getInstance().getClientes();
 	}
-	
+
+	@Override
 	public void removerClienteEditado(ClienteDTO clienteDTO) {
 		BancoDeDados.getInstance().getClientes().remove(clienteDTO);
 		Persistencia.getInstance().salvarBanco(BancoDeDados.getInstance(), Constantes.NOME_ARQUIVO_XML);
 	}
+	
+	
 
 	
 	

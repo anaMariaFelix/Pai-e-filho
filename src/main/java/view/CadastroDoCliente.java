@@ -301,7 +301,7 @@ public class CadastroDoCliente extends JanelaPadrao{
 
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new TelaMenu();
+			new Cadastros();
 
 		}
 

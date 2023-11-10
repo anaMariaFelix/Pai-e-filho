@@ -73,6 +73,11 @@ public class ClienteController {
 		throw new ClienteNaoEncontradoException();
 
 	}
+	
+	public void removerClienteEditado(ClienteDTO cliente) {
+		ClienteDAO.getInstance().removerClienteEditado(cliente);
+		
+	}
 
 
 }
