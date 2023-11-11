@@ -3,11 +3,8 @@ package main;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import controller.AdministradorController;
 import view.CadastrarPedido;
-import view.TelaCadastroAdm;
-import view.TelaLogin;
 import view.TelaMenu;
 
 public class Programa {
