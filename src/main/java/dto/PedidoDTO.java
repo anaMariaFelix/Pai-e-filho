@@ -8,14 +8,24 @@ public class PedidoDTO{
 	private String servico;
 	private String descricao;
 	private String valor;
+	private String finalizado;
 	
-	public PedidoDTO(String nome, String emailCliente, String telefone, String servico, String descricao, String valor) {
+	public PedidoDTO(String nome, String emailCliente, String telefone, String servico, String descricao, String valor,String finalizado) {
 		this.nomeCliente = nome;
 		this.emailCliente = emailCliente;
 		this.telefone = telefone;
 		this.servico = servico;
 		this.descricao = descricao;
 		this.valor = valor;
+		this.finalizado = finalizado;
+	}
+	
+	public String getFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(String finalizado) {
+		this.finalizado = finalizado;
 	}
 	
 	public String getNomeCliente() {

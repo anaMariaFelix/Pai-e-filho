@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bancoDeDados.BancoDeDados>
+  <clientes/>
+  <funcionarios/>
+  <todosServicos>
+    <string>PVC</string>
+    <string>Letras</string>
+    <string>Placas</string>
+    <string>ACM</string>
+    <string>Fachada</string>
+    <string>Corrimão</string>
+    <string>Alambrado</string>
+  </todosServicos>
+  <pedidos>
+    <dto.PedidoDTO>
+      <nomeCliente>Ismael fresco</nomeCliente>
+      <emailCliente>eandrey413@gmail.com</emailCliente>
+      <telefone>77 777777777</telefone>
+      <servico>PVC</servico>
+      <descricao>asdasdasdasd</descricao>
+      <valor>0,2</valor>
+      <finalizado>Finalizado</finalizado>
+    </dto.PedidoDTO>
+    <dto.PedidoDTO>
+      <nomeCliente>asdasdasd</nomeCliente>
+      <emailCliente>ismael@321</emailCliente>
+      <telefone>77 777777777</telefone>
+      <servico>PVC</servico>
+      <descricao>7777777777</descricao>
+      <valor>777777777777777</valor>
+      <finalizado>Finalizado</finalizado>
+    </dto.PedidoDTO>
+    <dto.PedidoDTO>
+      <nomeCliente>ana feia</nomeCliente>
+      <emailCliente>eandrey413@gmail.com</emailCliente>
+      <telefone>66 666666666</telefone>
+      <servico>PVC</servico>
+      <descricao>dasdasd</descricao>
+      <valor>123546489</valor>
+      <finalizado>Andamento</finalizado>
+    </dto.PedidoDTO>
+  </pedidos>
+</bancoDeDados.BancoDeDados>

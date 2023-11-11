@@ -15,6 +15,7 @@ import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.EmailJaExistenteStrategy;
 import strategy.Erros;
+import util.Constantes;
 import util.ValidaEmail;
 import util.ValidadorCPF;
 
@@ -27,7 +28,7 @@ public class EditarCliente {
 	public void editarCliente(ClienteDTO clienteDTO) {
 		ClienteDTO cliente = clienteDTO;
 		
-		CadastroDoCliente telaCadastroCliente = new CadastroDoCliente();
+		CadastroDoCliente telaCadastroCliente = new CadastroDoCliente(Constantes.LISTAGEM);
 		
 		telaCadastroCliente.getCadastrarCliente().setText("Editar Cliente");
 		
@@ -61,7 +62,7 @@ public class EditarCliente {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemClienteFuncionario();
+			new ListagemCliente();
 		}
 
 	}
@@ -110,18 +111,16 @@ public class EditarCliente {
 				ClienteDTO cliente = new ClienteDTO(nome,telefone,email,cpf,notificacao);
 
 				try {
-					ClienteController.getInstance().removerClienteEditado(clienteSemEdicao);
+					ClienteController.getInstance().removerCliente(clienteSemEdicao);
 					ClienteController.getInstance().salvarCliente(cliente);
 					
 					JOptionPane.showMessageDialog(null, "Cliente Editado com sucesso.");
 					
 					janela.dispose();
-					new ListagemClienteFuncionario();
+					new ListagemCliente();
 
 				} catch (EmailJaCadastradoException e1) {
-					Erros.setStrategy(new EmailJaExistenteStrategy());
-					Erros.lancarErro();
-					e1.getMessage();
+					
 				}
 
 

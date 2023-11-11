@@ -23,7 +23,7 @@ public class RelatorioCliente<G> implements Relatorio<G>{
 		FileOutputStream pdf = null;
 
 		try {
-			pdf = new FileOutputStream(Constantes.NOME_PDF);
+			pdf = new FileOutputStream(Constantes.RELATORIO_CLIENTE);
 			PdfWriter.getInstance(doc, pdf);
 
 			doc.open();
