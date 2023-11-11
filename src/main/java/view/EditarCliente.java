@@ -119,9 +119,7 @@ public class EditarCliente {
 					new ListagemClienteFuncionario();
 
 				} catch (EmailJaCadastradoException e1) {
-					Erros.setStrategy(new EmailJaExistenteStrategy());
-					Erros.lancarErro();
-					e1.getMessage();
+					
 				}
 
 

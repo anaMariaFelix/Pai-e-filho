@@ -225,6 +225,13 @@
       <cpf>71308976437</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>anna</nome>
+      <telefone>11111111112</telefone>
+      <email>111@njhkh</email>
+      <cpf>11993299408</cpf>
+      <notificacao>false</notificacao>
+    </dto.ClienteDTO>
   </clientes>
   <funcionarios>
     <dto.FuncionarioDTO>
@@ -261,8 +268,7 @@
     <string>PVC</string>
     <string>Letras</string>
   </todosServicos>
-  <pedidos>
-  </pedidos>
+  <pedidos/>
   <administrador>
     <nome>ana a LIDER</nome>
     <email>1@1</email>
