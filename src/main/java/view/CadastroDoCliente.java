@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
@@ -14,6 +15,7 @@ import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.EmailJaExistenteStrategy;
 import strategy.Erros;
+import util.Constantes;
 import util.ValidaEmail;
 import util.ValidadorCPF;
 
@@ -28,7 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 
-public class CadastroDoCliente extends JanelaPadrao{
+public class CadastroDoCliente extends JanelaPadrao {
 	private JTextField campoNome;
 	private JTextField campoTelefone;
 	private JTextField campoEmail;
@@ -39,21 +41,24 @@ public class CadastroDoCliente extends JanelaPadrao{
 
 	private JRadioButton radioButonSim;
 	private JRadioButton radioButonNao;
-	
+
 	private JLabel cadastrarCliente;
-	
+
 	private OuvinteBotaoVoltar ouvinteVoltar;
 	private OuvinteBotaoSalvar ouvinteSalvar;
 
+	private String janelaAntiga;
 
-	public CadastroDoCliente() {
+	public CadastroDoCliente(String janelaAntiga) {
+		this.janelaAntiga = janelaAntiga;
+
 		criarBotao();
 		criarLabel();
 		criarTextField();
 		JRadioButton();
 		setVisible(true);
-	}
 
+	}
 
 	public JLabel getCadastrarCliente() {
 		return cadastrarCliente;
@@ -67,31 +72,25 @@ public class CadastroDoCliente extends JanelaPadrao{
 		return botaoVoltar;
 	}
 
-
 	public void setBotaoVoltar(JButton botaoVoltar) {
 		this.botaoVoltar = botaoVoltar;
 	}
-
 
 	public JButton getBotaoSalvar() {
 		return botaoSalvar;
 	}
 
-
 	public void setBotaoSalvar(JButton botaoSalvar) {
 		this.botaoSalvar = botaoSalvar;
 	}
-
 
 	public void setRadioButonSim(JRadioButton radioButonSim) {
 		this.radioButonSim = radioButonSim;
 	}
 
-
 	public void setRadioButonNao(JRadioButton radioButonNao) {
 		this.radioButonNao = radioButonNao;
 	}
-
 
 	public JTextField getCampoNome() {
 		return campoNome;
@@ -201,7 +200,6 @@ public class CadastroDoCliente extends JanelaPadrao{
 		getContentPane().add(campoNome);
 		campoNome.setColumns(10);
 
-
 		try {
 			MaskFormatter mascaraDeData = new MaskFormatter("(##)#####-####");
 			campoTelefone = new JFormattedTextField(mascaraDeData);
@@ -219,7 +217,6 @@ public class CadastroDoCliente extends JanelaPadrao{
 		campoEmail.setColumns(10);
 		campoEmail.setBounds(276, 328, 344, 47);
 		getContentPane().add(campoEmail);
-
 
 		try {
 
@@ -254,8 +251,8 @@ public class CadastroDoCliente extends JanelaPadrao{
 
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(radioButonSim);
-		bg.add(radioButonNao); 
-		
+		bg.add(radioButonNao);
+
 	}
 
 	public void criarBotao() {
@@ -266,7 +263,6 @@ public class CadastroDoCliente extends JanelaPadrao{
 		botaoVoltar.addActionListener(ouvinteVoltar);
 		getContentPane().add(botaoVoltar);
 
-		
 		ouvinteSalvar = new OuvinteBotaoSalvar(this);
 		botaoSalvar = new JButton("Salvar");
 		botaoSalvar.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -301,7 +297,12 @@ public class CadastroDoCliente extends JanelaPadrao{
 
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new Cadastros();
+
+			if (janelaAntiga.equals(Constantes.LISTAGEM)) {
+				new ListagemCliente();
+			} else {
+				new Cadastros();
+			}
 
 		}
 
@@ -322,7 +323,8 @@ public class CadastroDoCliente extends JanelaPadrao{
 		public void actionPerformed(ActionEvent e) {
 
 			String nome = janela.getCampoNome().getText();
-			String telefone = janela.getCampoTelefone().getText().replace("(", "").replace(")", "").replace("-", "").trim();
+			String telefone = janela.getCampoTelefone().getText().replace("(", "").replace(")", "").replace("-", "")
+					.trim();
 			String email = janela.getCampoEmail().getText();
 			String cpf = removerMacaraCampoCPF(janela.getCampoCPF());
 			boolean notificacao = false;
@@ -339,14 +341,14 @@ public class CadastroDoCliente extends JanelaPadrao{
 				Erros.setStrategy(new CPFInvalido());
 				Erros.lancarErro();
 
-			}else {
-				
+			} else {
+
 				if (radioButonSim.isSelected()) {
 					notificacao = true;
 
 				}
-				
-				ClienteDTO cliente = new ClienteDTO(nome,telefone,email,cpf,notificacao);
+
+				ClienteDTO cliente = new ClienteDTO(nome, telefone, email, cpf, notificacao);
 
 				try {
 					ClienteController.getInstance().salvarCliente(cliente);
@@ -359,7 +361,6 @@ public class CadastroDoCliente extends JanelaPadrao{
 					Erros.lancarErro();
 					e1.getMessage();
 				}
-
 
 			}
 

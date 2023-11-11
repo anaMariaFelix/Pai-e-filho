@@ -55,7 +55,7 @@ public class DetalharFuncionario {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemClienteFuncionario();
+			new ListagemCliente();
 		}
 
 	}

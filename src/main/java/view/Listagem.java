@@ -21,7 +21,7 @@ public class Listagem extends JanelaPadrao{
 		JLabel listagem = new JLabel("Listagens");
 		listagem.setForeground(new Color(255, 255, 255));
 		listagem.setFont(new Font("Times New Roman", Font.BOLD, 45));
-		listagem.setBounds(356, 69, 190, 53);
+		listagem.setBounds(356, 32, 190, 53);
 		getContentPane().add(listagem);
 		
 		JLabel img = new JLabel("");
@@ -34,27 +34,32 @@ public class Listagem extends JanelaPadrao{
 	public void criarJButton() {
 		JButton pedido = new JButton("Pedido");
 		pedido.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		pedido.setBounds(531, 169, 265, 68);
+		pedido.setBounds(531, 131, 265, 68);
 		pedido.addActionListener(new OuvinteBotaoPedido(this));
 		getContentPane().add(pedido);
 		
-		JButton clienteFuncionario = new JButton("Cliente/Funcionários");
+		JButton clienteFuncionario = new JButton("Clientes");
 		clienteFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		clienteFuncionario.setBounds(531, 373, 265, 68);
+		clienteFuncionario.setBounds(531, 427, 265, 68);
 		clienteFuncionario.addActionListener(new OuvinteBotaoClientesFuncionario(this));
 		getContentPane().add(clienteFuncionario);
 		
 		JButton servico = new JButton("Serviços");
 		servico.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		servico.setBounds(531, 272, 265, 68);
+		servico.setBounds(531, 230, 265, 68);
 		servico.addActionListener(new OuvinteBotaoServico(this));
 		getContentPane().add(servico);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnVoltar.setBounds(531, 474, 265, 68);
+		btnVoltar.setBounds(531, 523, 265, 68);
 		btnVoltar.addActionListener(new OuvinteBotaoVoltar(this));
 		getContentPane().add(btnVoltar);
+		
+		JButton botaoFuncionario = new JButton("Funcionário");
+		botaoFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		botaoFuncionario.setBounds(531, 330, 265, 68);
+		getContentPane().add(botaoFuncionario);
 	}
 	
 	
@@ -86,7 +91,7 @@ public class Listagem extends JanelaPadrao{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemClienteFuncionario();
+			new ListagemCliente();
 		}
 		
 	}
@@ -124,6 +129,4 @@ public class Listagem extends JanelaPadrao{
 		}
 		
 	}
-	
-	
 }

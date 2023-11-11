@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import dao.ClienteDAO;
+import dao.PedidoDAO;
 import dto.ClienteDTO;
 import execoesPersonalizadas.ClienteNaoEncontradoException;
 import execoesPersonalizadas.EmailJaCadastradoException;
@@ -55,10 +56,17 @@ public class ClienteController {
 
 	}
 	
-	public void removerClienteEditado(ClienteDTO cliente) {
+	public void removerCliente(ClienteDTO cliente) {
 		ClienteDAO.getInstance().removerClienteEditado(cliente);
 		
 	}
+	
+	public boolean existeCliente(String email) {
+		return ClienteDAO.getInstance().verificaSeClienteExiste(email);
+	}
 
+	public ArrayList<ClienteDTO> recuperarTodosClientes(){
+		return ClienteDAO.getInstance().recuperaTodosClientes();
+	}
 
 }

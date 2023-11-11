@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import iterator.ConcretIterator;
 import iterator.Iterator;
 import observer.Observer;

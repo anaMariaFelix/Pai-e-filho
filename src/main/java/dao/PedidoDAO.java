@@ -66,6 +66,8 @@ public class PedidoDAO implements PedidoInterfaceDAO{
 		BancoDeDados.getInstance().getPedidos().remove(pedido);
 		Persistencia.getInstance().salvarBanco(BancoDeDados.getInstance(),  Constantes.NOME_ARQUIVO_XML);
 	}
+
+	
 	 
 
 }

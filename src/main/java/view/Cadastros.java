@@ -1,12 +1,15 @@
 package view;
 
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+import util.Constantes;
 
 public class Cadastros extends JanelaPadrao {
 
@@ -67,7 +70,7 @@ public class Cadastros extends JanelaPadrao {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new CadastroDoCliente();
+			new CadastroDoCliente(Constantes.CADASTROS);
 		}
 
 	}
@@ -99,7 +102,7 @@ public class Cadastros extends JanelaPadrao {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new CadastrarPedido();
+			new CadastrarPedido("cadastros");
 		}
 
 	}

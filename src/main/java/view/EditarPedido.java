@@ -9,6 +9,7 @@ import dto.PedidoDTO;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
+import util.Constantes;
 import util.ValidaEmail;
 
 
@@ -21,7 +22,7 @@ public class EditarPedido {
 	public EditarPedido (PedidoDTO pedidoDTO) {
 		this.pedidoDTO = pedidoDTO;
 		
-		telaCadastrarPedido = new CadastrarPedido();
+		telaCadastrarPedido = new CadastrarPedido("listagem");
 		
 		telaCadastrarPedido.getCadastrarPedido().setText("Editar Pedido");
 		
@@ -53,7 +54,7 @@ public class EditarPedido {
 			
 			if(e.getSource() == janela.getButtonVoltar()) {
 				this.janela.dispose();
-				new Cadastros();
+				new Listagem();
 		
 			}
 		}
@@ -91,14 +92,14 @@ public class EditarPedido {
 			}
 					
 			else {
-				PedidoDTO pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor);
+				PedidoDTO pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor,pedidoAntigo.getFinalizado());
 				PedidoController.getInstance().removerPedido(pedidoAntigo);
 				
 				
 				PedidoController.getInstance().salvarPedido(pedido);
 				JOptionPane.showMessageDialog(janela, "Pedido Editado com sucesso!");
 				janela.dispose();
-				new Cadastros();
+				new ListagemPedido();
 	
 			} 
 

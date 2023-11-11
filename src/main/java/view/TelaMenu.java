@@ -103,7 +103,7 @@ public class TelaMenu extends JanelaPadrao {
 							EmailObserverController.getInstance().preencherArrayNotificados();
 							EmailObserverController.getInstance().setMensagem(notificacaoParaCliente);
 							
-							JOptionPane.showMessageDialog(null, "Os emails foram enviados");
+							JOptionPane.showMessageDialog(null, "Os emails estão sendo enviados");
 							
 							continuar = false;
 						} else {

@@ -84,7 +84,7 @@ public class EditarFuncionario{
 					JOptionPane.showMessageDialog(janela, "Funcionário cadastrado com sucesso!");
 					
 					janela.dispose();
-					new ListagemClienteFuncionario(); 
+					new ListagemCliente(); 
 					
 				} catch (FuncionarioExistenteException e1) {
 					Erros.setStrategy(new FuncionarioExistenteStrategy());
@@ -112,7 +112,7 @@ public class EditarFuncionario{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemClienteFuncionario();
+			new ListagemCliente();
 		}
 
 	}
