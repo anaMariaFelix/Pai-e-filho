@@ -86,7 +86,7 @@ public class Cadastros extends JanelaPadrao {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new CadastroFuncionario();
+			new CadastroFuncionario(Constantes.CADASTROS);
 		}
 
 	}

@@ -7,6 +7,7 @@ import dto.PedidoDTO;
 import execoesPersonalizadas.PedidoNaoEncontradoException;
 import iterator.ConcretIterator;
 import iterator.Iterator;
+import util.Constantes;
 
 public class PedidoController {
 	private volatile static PedidoController instance;
@@ -54,12 +55,12 @@ public class PedidoController {
 		while(array.hasNext()) {
 			PedidoDTO pedido = array.next();
 			
-			if (tipo.equals("finalizado")) {
-				if (pedido.getFinalizado().equals("finalizado")) {
+			if (tipo.equals(Constantes.FINALIZADO)) {
+				if (pedido.getFinalizado().equals(Constantes.FINALIZADO)) {
 					filtrados.add(pedido);
 				}	
 			}else {
-				if (pedido.getFinalizado().equals("andamento")) {
+				if (pedido.getFinalizado().equals(Constantes.ANDAMENTO)) {
 					filtrados.add(pedido);
 				}
 			}

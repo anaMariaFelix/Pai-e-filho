@@ -353,8 +353,14 @@ public class CadastroDoCliente extends JanelaPadrao {
 				try {
 					ClienteController.getInstance().salvarCliente(cliente);
 					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso.");
+					
 					dispose();
-					new Cadastros();
+					
+					if (janelaAntiga.equals(Constantes.CADASTROS)) {
+						new Cadastros();
+					} else {
+						new ListagemCliente();
+					}
 
 				} catch (EmailJaCadastradoException e1) {
 					Erros.setStrategy(new EmailJaExistenteStrategy());

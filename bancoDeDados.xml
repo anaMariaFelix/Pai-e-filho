@@ -13,15 +13,6 @@
   </todosServicos>
   <pedidos>
     <dto.PedidoDTO>
-      <nomeCliente>Ismael fresco</nomeCliente>
-      <emailCliente>eandrey413@gmail.com</emailCliente>
-      <telefone>77 777777777</telefone>
-      <servico>PVC</servico>
-      <descricao>asdasdasdasd</descricao>
-      <valor>0,2</valor>
-      <finalizado>Finalizado</finalizado>
-    </dto.PedidoDTO>
-    <dto.PedidoDTO>
       <nomeCliente>asdasdasd</nomeCliente>
       <emailCliente>ismael@321</emailCliente>
       <telefone>77 777777777</telefone>
@@ -37,6 +28,15 @@
       <servico>PVC</servico>
       <descricao>dasdasd</descricao>
       <valor>123546489</valor>
+      <finalizado>Finalizado</finalizado>
+    </dto.PedidoDTO>
+    <dto.PedidoDTO>
+      <nomeCliente>Ismaé</nomeCliente>
+      <emailCliente>ladrona@traficante</emailCliente>
+      <telefone>62 662626262</telefone>
+      <servico>ACM</servico>
+      <descricao>Feio feio</descricao>
+      <valor>2.50</valor>
       <finalizado>Andamento</finalizado>
     </dto.PedidoDTO>
   </pedidos>

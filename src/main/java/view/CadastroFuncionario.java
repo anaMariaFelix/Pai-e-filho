@@ -22,6 +22,7 @@ import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
 import strategy.FuncionarioExistenteStrategy;
+import util.Constantes;
 import util.ValidaEmail;
 import util.ValidadorCPF;
 
@@ -31,16 +32,19 @@ public class CadastroFuncionario extends JanelaPadrao {
 	private JTextField campoTelefone;
 	private JTextField campoEmail;
 	private JTextField campoCPF;
-	
+
 	private JButton buttonVoltar;
 	private JButton buttonSalvar;
-	
+
 	private JLabel CadastrarFuncionário;
-	
+
 	private OuvinteBotaoSalvar ouvinteSalvar;
 	private OuvinteBotaoVoltar ouvinteVoltar;
 
-	public CadastroFuncionario() {
+	private String janelaAntiga;
+
+	public CadastroFuncionario(String janelaAntiga) {
+		this.janelaAntiga = janelaAntiga;
 
 		criarJbutton();
 		criarJTextField();
@@ -49,14 +53,14 @@ public class CadastroFuncionario extends JanelaPadrao {
 	}
 
 	public void criarJbutton() {
-		ouvinteVoltar = new OuvinteBotaoVoltar(this);
-		
+		ouvinteVoltar = new OuvinteBotaoVoltar(this, janelaAntiga);
+
 		buttonVoltar = new JButton("Voltar");
 		buttonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonVoltar.setBounds(282, 501, 166, 41);
 		buttonVoltar.addActionListener(ouvinteVoltar);
 		getContentPane().add(buttonVoltar);
-		
+
 		ouvinteSalvar = new OuvinteBotaoSalvar(this);
 
 		buttonSalvar = new JButton("Salvar");
@@ -65,7 +69,6 @@ public class CadastroFuncionario extends JanelaPadrao {
 		buttonSalvar.addActionListener(ouvinteSalvar);
 		getContentPane().add(buttonSalvar);
 	}
-
 
 	public void criarJTextField() {
 		campoNome = new JTextField();
@@ -142,7 +145,7 @@ public class CadastroFuncionario extends JanelaPadrao {
 		img.setBounds(711, 503, 166, 135);
 		getContentPane().add(img);
 	}
-	
+
 	public OuvinteBotaoSalvar getOuvinteSalvar() {
 		return ouvinteSalvar;
 	}
@@ -182,7 +185,7 @@ public class CadastroFuncionario extends JanelaPadrao {
 	private class OuvinteBotaoSalvar implements ActionListener {
 
 		private CadastroFuncionario janela;
-		
+
 		public OuvinteBotaoSalvar(CadastroFuncionario cadastroFuncionario) {
 			this.janela = cadastroFuncionario;
 		}
@@ -194,58 +197,66 @@ public class CadastroFuncionario extends JanelaPadrao {
 			String telefone = campoTelefone.getText().replace("(", "").replace(")", "").replace("-", "").trim();
 			String email = campoEmail.getText();
 			String cpf = campoCPF.getText().replace("-", "").replace(".", "").trim();
-			
-			
+
 			if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || cpf.isEmpty()) {
 				Erros.setStrategy(new CamposNaoPreenchidosStrategy());
 				Erros.lancarErro();
-				
-			}else if (!ValidaEmail.emailValidatorP(email)) {
+
+			} else if (!ValidaEmail.emailValidatorP(email)) {
 				Erros.setStrategy(new EmailInvalidoStrategy());
 				Erros.lancarErro();
-				
-			}else if (!ValidadorCPF.isCPF(cpf)) {
+
+			} else if (!ValidadorCPF.isCPF(cpf)) {
 				Erros.setStrategy(new CPFInvalido());
 				Erros.lancarErro();
-				
-			}else {
-				
+
+			} else {
+
 				FuncionarioDTO funcionario = new FuncionarioDTO(nome, telefone, email, cpf);
-				
+
 				try {
 					FuncionarioController.getInstance().salvarFuncionario(funcionario);
 					JOptionPane.showMessageDialog(janela, "Funcionário cadastrado com sucesso!");
-					
+
 					janela.dispose();
-					new Cadastros(); 
 					
+					if (janelaAntiga.equals(Constantes.CADASTROS)) {
+						new Cadastros();
+					} else {
+						new ListarFuncionario();
+					}
+
 				} catch (FuncionarioExistenteException e1) {
 					Erros.setStrategy(new FuncionarioExistenteStrategy());
 					Erros.lancarErro();
 				}
-				
-				
-				
+
 			}
-			
 
 		}
 
 	}
-	
 
 	private class OuvinteBotaoVoltar implements ActionListener {
 
 		private CadastroFuncionario janela;
+		private String janelaAntiga;
 
-		public OuvinteBotaoVoltar(CadastroFuncionario cadastro) {
+		public OuvinteBotaoVoltar(CadastroFuncionario cadastro, String janelaAntiga) {
 			this.janela = cadastro;
+			this.janelaAntiga = janelaAntiga;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new Cadastros();
+
+			if (janelaAntiga.equals(Constantes.CADASTROS)) {
+				new Cadastros();
+			} else {
+				new ListarFuncionario();
+			}
+
 		}
 
 	}
