@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dto.FuncionarioDTO;
+import util.Constantes;
 
 public class DetalharFuncionario {
 
@@ -15,7 +16,7 @@ public class DetalharFuncionario {
 		this.funcionario = funcionario;
 		
 		
-		telaCadFuncionario = new CadastroFuncionario();
+		telaCadFuncionario = new CadastroFuncionario(Constantes.LISTAGEM);
 		
 		telaCadFuncionario.getCadastrarFuncionário().setText("Detalhar Funcionário");
 		
@@ -55,7 +56,7 @@ public class DetalharFuncionario {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemCliente();
+			new ListarFuncionario();
 		}
 
 	}

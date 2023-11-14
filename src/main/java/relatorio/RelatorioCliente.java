@@ -15,7 +15,7 @@ import util.Constantes;
 public class RelatorioCliente<G> implements Relatorio<G>{
 
 	
-	public <PdfPTable> void gerarRelatorio(G objetoCliente){
+	public void gerarRelatorio(G objetoCliente){
 		ClienteDTO cliente = (ClienteDTO)objetoCliente;
 		
 		Document doc = new Document(PageSize.A4);

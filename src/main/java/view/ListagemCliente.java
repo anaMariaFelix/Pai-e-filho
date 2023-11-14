@@ -61,7 +61,7 @@ public class ListagemCliente extends JanelaPadrao {
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Nome");
 		modelo.addColumn("Telefone");
-		modelo.addColumn("email");
+		modelo.addColumn("Email");
 		modelo.addColumn("Editar");
 		modelo.addColumn("Detalhar");
 		modelo.addColumn("Gerar Relatorio");
@@ -134,7 +134,7 @@ public class ListagemCliente extends JanelaPadrao {
 		novo = new JButton("Novo");
 		novo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		novo.setBounds(695, 534, 166, 41);
-
+		novo.addActionListener(new OuvinteBotaoNovo(this));
 		getContentPane().add(novo);
 
 		voltar = new JButton("Voltar");

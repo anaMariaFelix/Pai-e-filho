@@ -38,6 +38,6 @@ public class Programa {
 //		} else {
 //			new CadastrarPedido();
 //		}
-		new ListarFuncionario();
+		new TelaMenu();
 	}
 }

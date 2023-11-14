@@ -48,13 +48,8 @@ public class FuncionarioController {
 	}
 
 
-	public ArrayList<FuncionarioDTO> recuperarFuncionarios(FuncionarioDTO funcionarioDTO) throws FuncionarioNaoEncontradoException  {
-		ArrayList<FuncionarioDTO> funcionario = FuncionarioDAO.getInstance().recuperaTodosFuncionarios();
-
-		if(funcionario != null) {
-			return funcionario;
-		}
-		throw new FuncionarioNaoEncontradoException();
+	public ArrayList<FuncionarioDTO> recuperarTodosFuncionarios() {
+		return FuncionarioDAO.getInstance().recuperaTodosFuncionarios();
 
 	}
 
