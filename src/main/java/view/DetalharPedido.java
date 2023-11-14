@@ -3,6 +3,8 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JScrollPane;
+
 import dto.PedidoDTO;
 
 public class DetalharPedido {
@@ -12,7 +14,7 @@ public class DetalharPedido {
 	public DetalharPedido(PedidoDTO pedidoDTO) {
 		this.pedidoDTO = pedidoDTO;
 		
-		CadastrarPedido telaCadastroPedido = new CadastrarPedido();
+		CadastrarPedido telaCadastroPedido = new CadastrarPedido("listagem");
 		telaCadastroPedido.getCampoValor().setLocation(275, 529);
 		
 		telaCadastroPedido.getCadastrarPedido().setText("Detalhar Pedido");
@@ -26,23 +28,23 @@ public class DetalharPedido {
 		
 		
 		telaCadastroPedido.getCampoNomeCliente().setText(pedidoDTO.getNomeCliente());
-		telaCadastroPedido.getCampoNomeCliente().disable();
+		telaCadastroPedido.getCampoNomeCliente().setEnabled(false);
 		
 		telaCadastroPedido.getCampoEmail().setText(pedidoDTO.getEmailCliente());
-		telaCadastroPedido.getCampoEmail().disable();
+		telaCadastroPedido.getCampoEmail().setEnabled(false);
 		
 		telaCadastroPedido.getCampoTelefone().setText(pedidoDTO.getTelefone());
-		telaCadastroPedido.getCampoTelefone().disable();
+		telaCadastroPedido.getCampoTelefone().setEnabled(false);
 		
 		telaCadastroPedido.getDescricao().setText(pedidoDTO.getDescricao());
-		telaCadastroPedido.getDescricao().disable();
+		telaCadastroPedido.getDescricao().setEnabled(false);
 		
 		
 		telaCadastroPedido.getCampoValor().setText(pedidoDTO.getValor());
-		telaCadastroPedido.getCampoValor().disable();
+		telaCadastroPedido.getCampoValor().setEnabled(false);
 		
 		telaCadastroPedido.getComboBoxServico().getSelectedItem();
-		telaCadastroPedido.getComboBoxServico().disable();
+		telaCadastroPedido.getComboBoxServico().setEnabled(false);
 		
 		telaCadastroPedido.getButtonVoltar().addActionListener(new OuvinteBotaoVoltar(telaCadastroPedido));
 		

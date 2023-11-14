@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dto.ClienteDTO;
+import util.Constantes;
 
 
 public class DetalharCliente {
@@ -15,7 +16,7 @@ public class DetalharCliente {
 	public void detalharCliente(ClienteDTO clienteDTO) {
 		ClienteDTO cliente = clienteDTO;
 		
-		CadastroDoCliente telaCadastroCliente = new CadastroDoCliente();
+		CadastroDoCliente telaCadastroCliente = new CadastroDoCliente(Constantes.LISTAGEM);
 		
 		telaCadastroCliente.getCadastrarCliente().setText("Detalhar Cliente");
 		
@@ -64,7 +65,7 @@ public class DetalharCliente {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemClienteFuncionario();
+			new ListagemCliente();
 		}
 
 	}

@@ -10,13 +10,22 @@ public class Pedido {
 	private String servico;
 	private String descricao;
 	private String valor;
-	
+	private String finalizado = "andamento";	
+
 	public Pedido(PedidoDTO pedidoDTO) {
 		this.nomeCliente = pedidoDTO.getNomeCliente();
 		this.emailCliente = pedidoDTO.getEmailCliente();
 		this.telefone = pedidoDTO.getTelefone();
 		this.servico = pedidoDTO.getServico();
 		this.descricao = pedidoDTO.getDescricao();
+	}
+	
+	public String getFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(String finalizado) {
+		this.finalizado = finalizado;
 	}
 	
 	public String getNomeCliente() {

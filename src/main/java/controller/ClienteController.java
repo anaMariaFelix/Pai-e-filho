@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import dao.ClienteDAO;
+import dao.PedidoDAO;
 import dto.ClienteDTO;
 import execoesPersonalizadas.ClienteNaoEncontradoException;
 import execoesPersonalizadas.EmailJaCadastradoException;
@@ -45,25 +46,6 @@ public class ClienteController {
 		}
 	}
 
-	public void recuperarArrayDeClientes() {
-		ArrayList<ClienteDTO> clientes = ClienteDAO.getInstance().recuperaTodosClientes();
-
-		Iterator<ClienteDTO> arrayClientes = new ConcretIterator(clientes);
-
-		while(arrayClientes.hasNext()) {
-			ClienteDTO cliente = arrayClientes.next();
-			if(cliente.isNotificacao()) {
-				EmailObserver.getInstance().adicionar(new Cliente(cliente));
-			}
-		}
-
-	}
-
-	public void enviarEmail() {
-
-	}
-
-	
 
 	public ClienteDTO recuperarCliente(ClienteDTO cliente) throws ClienteNaoEncontradoException  {
 		ClienteDTO clienteDTO = ClienteDAO.getInstance().recuperarCliente(cliente.getEmail());
@@ -74,10 +56,17 @@ public class ClienteController {
 
 	}
 	
-	public void removerClienteEditado(ClienteDTO cliente) {
+	public void removerCliente(ClienteDTO cliente) {
 		ClienteDAO.getInstance().removerClienteEditado(cliente);
 		
 	}
+	
+	public boolean existeCliente(String email) {
+		return ClienteDAO.getInstance().verificaSeClienteExiste(email);
+	}
 
+	public ArrayList<ClienteDTO> recuperarTodosClientes(){
+		return ClienteDAO.getInstance().recuperaTodosClientes();
+	}
 
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import iterator.ConcretIterator;
 import iterator.Iterator;
 import observer.Observer;
@@ -33,9 +35,9 @@ public class EmailObserver {
 	}
 	
 	public void notificacao() {
-		Iterator<Cliente> clientes = new ConcretIterator(clientesObserver);
+		Iterator<Observer> clientes = new ConcretIterator(clientesObserver);
 		while(clientes.hasNext()) {
-			Cliente elemento = clientes.next();
+			Cliente elemento = (Cliente) clientes.next();
 			elemento.update(this);
 		}
 	}

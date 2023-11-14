@@ -15,4 +15,6 @@ public interface ClienteInterfaceDAO {
 	ArrayList<ClienteDTO> recuperaTodosClientes();
 	
 	void removerClienteEditado(ClienteDTO clienteDTO);
+	
+	boolean verificaSeClienteExiste(String email);
 }

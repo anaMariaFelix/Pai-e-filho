@@ -1,5 +1,6 @@
 package relatorio;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -23,7 +24,7 @@ public class RelatorioPedido<G> implements Relatorio<G>{
 		FileOutputStream pdf = null;
 
 		try {
-			pdf = new FileOutputStream(Constantes.NOME_PDF);
+			pdf = new FileOutputStream(Constantes.RELATORIO_PEDIDO);
 			PdfWriter.getInstance(doc, pdf);
 
 			doc.open();
@@ -46,6 +47,9 @@ public class RelatorioPedido<G> implements Relatorio<G>{
 			
 			p = new Paragraph("Informações do Cliente:");
 			doc.add(p);
+			
+			p = new Paragraph(" ");
+			doc.add(p);
 
 			p = new Paragraph("Nome: " + pedido.getNomeCliente());
 			doc.add(p);
@@ -60,6 +64,9 @@ public class RelatorioPedido<G> implements Relatorio<G>{
 			doc.add(p);
 			
 			p = new Paragraph("Informações do Pedido:");
+			doc.add(p);
+			
+			p = new Paragraph(" ");
 			doc.add(p);
 			
 			p = new Paragraph("Serviço escolhido: " + pedido.getServico());

@@ -1,9 +1,12 @@
 package controller;
 
 import java.util.ArrayList;
+
 import dao.PedidoDAO;
 import dto.PedidoDTO;
 import execoesPersonalizadas.PedidoNaoEncontradoException;
+import iterator.ConcretIterator;
+import iterator.Iterator;
 
 public class PedidoController {
 	private volatile static PedidoController instance;
@@ -27,7 +30,7 @@ public class PedidoController {
 		PedidoDAO.getInstance().salvarPedido(pedidoDTO);
 	}
 	
-	public ArrayList<PedidoDTO> recuperarArrayDePedidos() {
+	public ArrayList<PedidoDTO> recuperarTodosPedidos() {
 		return PedidoDAO.getInstance().recuperaTodosPedidos();
 	}
 	
@@ -39,6 +42,35 @@ public class PedidoController {
 		throw new PedidoNaoEncontradoException();
 				
 	}
+	
+	
+	public ArrayList<PedidoDTO> filtrarPorTipo(String tipo) {
+		
+		ArrayList<PedidoDTO> todosPedidos = recuperarTodosPedidos();
+		ArrayList<PedidoDTO> filtrados = new ArrayList();
+		
+		Iterator<PedidoDTO> array = new ConcretIterator(todosPedidos);
+		
+		while(array.hasNext()) {
+			PedidoDTO pedido = array.next();
+			
+			if (tipo.equals("finalizado")) {
+				if (pedido.getFinalizado().equals("finalizado")) {
+					filtrados.add(pedido);
+				}	
+			}else {
+				if (pedido.getFinalizado().equals("andamento")) {
+					filtrados.add(pedido);
+				}
+			}
+		}
+		
+		
+		return filtrados;
+
+	}
+	
+	
 	public ArrayList<String> pegaServicos(){
 		return PedidoDAO.getInstance().pegaServicos();
 	}

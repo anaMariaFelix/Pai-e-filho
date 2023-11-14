@@ -9,6 +9,7 @@ import dto.PedidoDTO;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
+import util.Constantes;
 import util.ValidaEmail;
 
 
@@ -21,7 +22,7 @@ public class EditarPedido {
 	public EditarPedido (PedidoDTO pedidoDTO) {
 		this.pedidoDTO = pedidoDTO;
 		
-		telaCadastrarPedido = new CadastrarPedido();
+		telaCadastrarPedido = new CadastrarPedido("listagem");
 		
 		telaCadastrarPedido.getCadastrarPedido().setText("Editar Pedido");
 		
@@ -38,7 +39,7 @@ public class EditarPedido {
 		
 		
 		telaCadastrarPedido.getButtonVoltar().addActionListener(new OuvinteBotaoVoltar(telaCadastrarPedido));
-		telaCadastrarPedido.getButtonSalvar().addActionListener(new OuvinteBotaoSalvar(telaCadastrarPedido));
+		telaCadastrarPedido.getButtonSalvar().addActionListener(new OuvinteBotaoSalvar(telaCadastrarPedido,pedidoDTO));
 	}
 	
 	private class OuvinteBotaoVoltar implements ActionListener{
@@ -53,7 +54,7 @@ public class EditarPedido {
 			
 			if(e.getSource() == janela.getButtonVoltar()) {
 				this.janela.dispose();
-				new Cadastros();
+				new Listagem();
 		
 			}
 		}
@@ -61,9 +62,11 @@ public class EditarPedido {
 	
 	protected class OuvinteBotaoSalvar implements ActionListener {
 		private CadastrarPedido janela;
+		private PedidoDTO pedidoAntigo;
 		
-		public OuvinteBotaoSalvar(CadastrarPedido janela) {
+		public OuvinteBotaoSalvar(CadastrarPedido janela,PedidoDTO pedidoAntigo) {
 			this.janela = janela;
+			this.pedidoAntigo = pedidoAntigo;
 		}
 
 		@Override
@@ -89,14 +92,14 @@ public class EditarPedido {
 			}
 					
 			else {
-				PedidoDTO pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor);
-				PedidoController.getInstance().removerPedido(pedido);
+				PedidoDTO pedido = new PedidoDTO(nome,email,telefone,servico,descricao,valor,pedidoAntigo.getFinalizado());
+				PedidoController.getInstance().removerPedido(pedidoAntigo);
 				
 				
 				PedidoController.getInstance().salvarPedido(pedido);
 				JOptionPane.showMessageDialog(janela, "Pedido Editado com sucesso!");
 				janela.dispose();
-				new Cadastros();
+				new ListagemPedido();
 	
 			} 
 

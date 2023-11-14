@@ -1,14 +1,16 @@
 package relatorio;
 
+import util.Constantes;
+
 public class RelatorioFactory {
 
-	public static Relatorio criaPizzar(String tipo) {
+	public static Relatorio criaRelatorio(String tipo) {
 		Relatorio relatorio = null;
 		
-		if(tipo.equalsIgnoreCase("cliente")) {
+		if(tipo.equalsIgnoreCase(Constantes.CLIENTE)) {
 			relatorio = new RelatorioCliente();
 			
-		}else if(tipo.equals("pedido")) {
+		}else if(tipo.equals(Constantes.PEDIDO)) {
 			relatorio = new RelatorioPedido();
 		}
 		
