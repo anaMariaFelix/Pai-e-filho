@@ -14,6 +14,7 @@ import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
 import strategy.FuncionarioExistenteStrategy;
+import util.Constantes;
 import util.ValidaEmail;
 import util.ValidadorCPF;
 
@@ -27,7 +28,7 @@ public class EditarFuncionario{
 		this.funcionarioAntigo = funcionario;
 		
 		
-		telaCadFuncionario = new CadastroFuncionario();
+		telaCadFuncionario = new CadastroFuncionario(Constantes.LISTAGEM);
 		
 		telaCadFuncionario.getCadastrarFuncionário().setText("Editar Funcionário");
 		
@@ -84,7 +85,7 @@ public class EditarFuncionario{
 					JOptionPane.showMessageDialog(janela, "Funcionário cadastrado com sucesso!");
 					
 					janela.dispose();
-					new ListagemCliente(); 
+					new ListarFuncionario();
 					
 				} catch (FuncionarioExistenteException e1) {
 					Erros.setStrategy(new FuncionarioExistenteStrategy());
@@ -112,7 +113,7 @@ public class EditarFuncionario{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
-			new ListagemCliente();
+			new ListarFuncionario();
 		}
 
 	}

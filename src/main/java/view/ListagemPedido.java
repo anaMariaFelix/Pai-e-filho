@@ -29,8 +29,8 @@ import util.LimparTabela;
 
 public class ListagemPedido extends JanelaPadrao {
 
-	private DefaultTableModel modelo; // modelo da tabela
-	private JTable table; // tabela
+	private DefaultTableModel modelo; 
+	private JTable table; 
 
 	private JButton novo;
 	private JButton voltar;
@@ -71,19 +71,19 @@ public class ListagemPedido extends JanelaPadrao {
 
 		table = new JTable(modelo);
 
-		table.getColumn("Finalizar").setCellRenderer(new ButtonRenderer()); // (linha/coluna)
+		table.getColumn("Finalizar").setCellRenderer(new ButtonRenderer()); 
 		table.getColumn("Finalizar").setCellEditor(new ButtonEditor(new JCheckBox()));
 
-		table.getColumn("Editar").setCellRenderer(new ButtonRenderer()); // (linha/coluna)
+		table.getColumn("Editar").setCellRenderer(new ButtonRenderer()); 
 		table.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
 
-		table.getColumn("Detalhar").setCellRenderer(new ButtonRenderer()); // (linha/coluna)
+		table.getColumn("Detalhar").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Detalhar").setCellEditor(new ButtonEditor(new JCheckBox()));
 
-		table.getColumn("Gerar Relatorio").setCellRenderer(new ButtonRenderer()); // (linha/coluna)
+		table.getColumn("Gerar Relatorio").setCellRenderer(new ButtonRenderer()); 
 		table.getColumn("Gerar Relatorio").setCellEditor(new ButtonEditor(new JCheckBox()));
 
-		table.getColumn("Excluir").setCellRenderer(new ButtonRenderer()); // (linha/coluna)
+		table.getColumn("Excluir").setCellRenderer(new ButtonRenderer()); 
 		table.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox()));
 
 		ArrayList<PedidoDTO> pedidos = PedidoController.getInstance().recuperarTodosPedidos();

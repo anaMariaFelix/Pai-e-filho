@@ -59,6 +59,7 @@ public class Listagem extends JanelaPadrao{
 		JButton botaoFuncionario = new JButton("Funcionário");
 		botaoFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		botaoFuncionario.setBounds(531, 330, 265, 68);
+		botaoFuncionario.addActionListener(new OuvinteBotaoFuncionario(this));
 		getContentPane().add(botaoFuncionario);
 	}
 	
@@ -75,6 +76,22 @@ public class Listagem extends JanelaPadrao{
 		public void actionPerformed(ActionEvent e) {
 			this.janela.dispose();
 			new ListagemPedido();
+		}
+		
+	}
+	
+	private class OuvinteBotaoFuncionario implements ActionListener{
+		
+		private Listagem janela;
+		
+		public OuvinteBotaoFuncionario(Listagem listagem) {
+			this.janela = listagem;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.janela.dispose();
+			new ListarFuncionario();
 		}
 		
 	}
