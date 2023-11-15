@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <bancoDeDados.BancoDeDados>
-  <clientes/>
+  <clientes>
+    <dto.ClienteDTO>
+      <nome>Ana feia</nome>
+      <telefone>11111111111</telefone>
+      <email>12@12</email>
+      <cpf>71308976437</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+  </clientes>
   <funcionarios/>
   <todosServicos>
     <string>PVC</string>
@@ -39,5 +47,20 @@
       <valor>2.50</valor>
       <finalizado>Andamento</finalizado>
     </dto.PedidoDTO>
+    <dto.PedidoDTO>
+      <nomeCliente>Andrey gay</nomeCliente>
+      <emailCliente>12@12</emailCliente>
+      <telefone>11 111111111</telefone>
+      <servico>PVC</servico>
+      <descricao>cor: azul
+tamanho: 20 metros</descricao>
+      <valor>10.000</valor>
+      <finalizado>Andamento</finalizado>
+    </dto.PedidoDTO>
   </pedidos>
+  <administrador>
+    <nome>Ana feia</nome>
+    <email>1@1</email>
+    <senha>12345678</senha>
+  </administrador>
 </bancoDeDados.BancoDeDados>
