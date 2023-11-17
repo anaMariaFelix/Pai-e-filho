@@ -5,7 +5,7 @@ import dto.PedidoDTO;
 public class Pedido {
 
 	private String nomeCliente;
-	private String emailCliente; //id
+	private String emailCliente;
 	private String telefone;
 	private String servico;
 	private String descricao;

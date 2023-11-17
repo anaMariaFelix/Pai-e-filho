@@ -5,9 +5,8 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.AdministradorController;
+import util.Constantes;
 import view.CadastrarPedido;
-import view.Listagem;
-import view.ListarFuncionario;
 import view.TelaCadastroAdm;
 import view.TelaLogin;
 import view.TelaMenu;
@@ -32,12 +31,12 @@ public class Programa {
 			// handle exception
 		}
 
-//		if (AdministradorController.getInstance().recuperarAdministrador() != null) {
-//			new TelaMenu();
-//
-//		} else {
-//			new CadastrarPedido();
-//		}
-		new TelaMenu();
+		if (AdministradorController.getInstance().recuperarAdministrador() != null) {
+			new TelaLogin();
+
+		} else {
+			new TelaCadastroAdm();
+		}
+		
 	}
 }

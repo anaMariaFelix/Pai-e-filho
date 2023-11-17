@@ -13,4 +13,6 @@ public interface ServicoDAOInterface {
 	void adicionarServico(String novoServico) throws ServicoExistenteException;
 	
 	void editarServico(int indice, String servicoEditado);
+	
+	String recuperarServicoPeloIndice(int indice);
 }

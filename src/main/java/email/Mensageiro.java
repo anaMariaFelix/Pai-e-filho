@@ -52,7 +52,6 @@ public class Mensageiro extends Thread{
 	}
 	
 	
-	
 	@Override
 	public void run() {
 
@@ -70,7 +69,7 @@ public class Mensageiro extends Thread{
 			email.send();
 
 		} catch (EmailException e) {
-			JOptionPane.showMessageDialog(null, "Não foi possivel enviar o email");
+			JOptionPane.showMessageDialog(null, "Não foi possivel enviar o email para: "+ emailCliente);
 			System.out.println(e.getMessage());
 
 		}

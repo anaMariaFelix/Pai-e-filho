@@ -12,6 +12,8 @@ public class Constantes {
 	public static final String LISTAGEM = "listagem";
 	public static final String CADASTROS = "cadastros";
 	
+	public static final String Menu = "Menu";
+	
 	public static final String RELATORIO_PEDIDO = "RelatorioPedido.pdf";
 	public static final String RELATORIO_CLIENTE = "RelatorioCliente.pdf";
 	

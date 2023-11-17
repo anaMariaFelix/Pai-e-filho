@@ -5,7 +5,7 @@ import dto.AdministradorDTO;
 public class Administrador {
 
 	private String nome;
-	private String email; //id
+	private String email;
 	private String senha;
 	
 	public Administrador(AdministradorDTO admDTO) {

@@ -54,7 +54,7 @@ public class Cadastros extends JanelaPadrao {
 		JLabel cadastros = new JLabel("Cadastros");
 		cadastros.setForeground(Color.WHITE);
 		cadastros.setFont(new Font("Times New Roman", Font.BOLD, 45));
-		cadastros.setBounds(355, 47, 196, 87);
+		cadastros.setBounds(343, 45, 212, 87);
 		getContentPane().add(cadastros);
 
 	}

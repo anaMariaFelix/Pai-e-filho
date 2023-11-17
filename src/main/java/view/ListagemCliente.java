@@ -16,9 +16,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ClienteController;
-import controller.PedidoController;
 import dto.ClienteDTO;
-import dto.PedidoDTO;
+import email.Mensageiro;
 import iterator.ConcretIterator;
 import iterator.Iterator;
 import relatorio.Relatorio;
@@ -65,6 +64,7 @@ public class ListagemCliente extends JanelaPadrao {
 		modelo.addColumn("Editar");
 		modelo.addColumn("Detalhar");
 		modelo.addColumn("Gerar Relatorio");
+		modelo.addColumn("Enviar Email");
 		modelo.addColumn("Excluir");
 
 		table = new JTable(modelo);
@@ -77,6 +77,9 @@ public class ListagemCliente extends JanelaPadrao {
 
 		table.getColumn("Gerar Relatorio").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Gerar Relatorio").setCellEditor(new ButtonEditor(new JCheckBox()));
+		
+		table.getColumn("Enviar Email").setCellRenderer(new ButtonRenderer());
+		table.getColumn("Enviar Email").setCellEditor(new ButtonEditor(new JCheckBox()));
 
 		table.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox()));
@@ -100,7 +103,7 @@ public class ListagemCliente extends JanelaPadrao {
 		while (clientes.hasNext()) {
 			ClienteDTO cliente = clientes.next();
 
-			Object[] linha = new Object[7];
+			Object[] linha = new Object[8];
 
 			linha[0] = cliente.getNome();
 			linha[1] = cliente.getTelefone();
@@ -121,10 +124,15 @@ public class ListagemCliente extends JanelaPadrao {
 			btRelatorio.addActionListener(new OuvinteBotaoRelatorio(this, cliente));
 			linha[5] = btRelatorio;
 
+			JButton btEmail = new JButton("Email");
+			btEmail.setBackground(new Color(39, 200, 86));
+			btEmail.addActionListener(new OuvinteBotaoEmail(this, cliente));
+			linha[6] = btEmail;
+			
 			JButton btExcluir = new JButton("Excluir");
 			btExcluir.setBackground(Color.red);
 			btExcluir.addActionListener(new OuvinteBotaoExcluir(this, cliente));
-			linha[6] = btExcluir;
+			linha[7] = btExcluir;
 
 			modelo.addRow(linha);
 		}
@@ -252,4 +260,26 @@ public class ListagemCliente extends JanelaPadrao {
 
 	}
 
+	private class OuvinteBotaoEmail implements ActionListener {
+
+		private ListagemCliente janela;
+		private ClienteDTO cliente;
+
+		public OuvinteBotaoEmail(ListagemCliente janela, ClienteDTO cliente) {
+			this.janela = janela;
+			this.cliente = cliente;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+
+			String conteudoEmailString = JOptionPane.showInputDialog("Informe o conteúdo do Email.");
+			Mensageiro.getInstance().setEmailCliente(cliente.getEmail());
+			Mensageiro.getInstance().setMensagem(conteudoEmailString);
+			JOptionPane.showMessageDialog(null, "O email está sendo enviado.");
+			Mensageiro.getInstance().start();
+			
+
+		}
+
+	}
 }

@@ -45,5 +45,9 @@ public class ServicoController {
 		ServicoDAO.getInstance().editarServico(indice, servicoEditado);
 
 	}
+	
+	public String recuperarServicoPeloIndice(int indice) {
+		return ServicoDAO.getInstance().recuperarServicoPeloIndice(indice);
+	}
 
 }

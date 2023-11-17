@@ -18,7 +18,7 @@ import com.thoughtworks.xstream.security.AnyTypePermission;
 
 public class Persistencia {
 
-private static Persistencia instance;
+	private volatile static Persistencia instance;
 	
 	private XStream xstream = new XStream(new DomDriver("UTF-8"));
 	private File arquivo;
@@ -30,13 +30,17 @@ private static Persistencia instance;
 	
 	public static Persistencia getInstance() {
 		if (instance == null) {
-			instance = new Persistencia();
+			synchronized (Persistencia.class) {
+				if(instance == null) {
+					instance = new Persistencia();
+				}
+			}
 		}
 		return instance;
 	}
 	
 
-	public void salvarBanco(BancoDeDados centralDeinformacoes,String nomeDoArquivo) {
+	public void salvarBanco(BancoDeDados bancoDeDados,String nomeDoArquivo) {
 		arquivo = new File(nomeDoArquivo+".xml");
 
 		try {
@@ -48,13 +52,14 @@ private static Persistencia instance;
 	        Writer writer = new OutputStreamWriter(outputStream,     StandardCharsets.UTF_8);
 	        writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
 	        
-	        xstream.toXML(centralDeinformacoes, writer);
+	        xstream.toXML(bancoDeDados, writer);
 	        String xml = outputStream.toString("UTF-8");
 	        
 	        OutputStream os = new FileOutputStream(arquivo);
 	        PrintWriter gravar = new PrintWriter(new OutputStreamWriter(os, "UTF-8"));
 			gravar.print(xml);
 			gravar.close();
+			
 		}catch (IOException e) {
 			e.printStackTrace();
 		}

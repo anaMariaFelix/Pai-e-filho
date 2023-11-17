@@ -117,15 +117,16 @@ public class ListagemPedido extends JanelaPadrao {
 			btFinalizar.addActionListener(new OuvinteBotaoFinalizar(this, pedido));
 			linha[4] = btFinalizar;
 
-			if (pedido.getFinalizado().equals(Constantes.FINALIZADO)) {
-				btFinalizar.setEnabled(false);
-			}
-
 			JButton btEditar = new JButton("Editar");
 			btEditar.setBackground(new Color(39, 228, 86));
 			btEditar.addActionListener(new OuvinteBotaoEditar(this, pedido));
 			linha[5] = btEditar;
 
+			if (pedido.getFinalizado().equals(Constantes.FINALIZADO)) {
+				btFinalizar.setEnabled(false);
+				btEditar.setEnabled(false);
+			}
+			
 			JButton btDetalhar = new JButton("Detalhar");
 			btDetalhar.setBackground(new Color(39, 228, 86));
 			btDetalhar.addActionListener(new OuvinteBotaoDetalhar(this, pedido));

@@ -1,6 +1,5 @@
 package view;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
@@ -9,10 +8,7 @@ import dto.AdministradorDTO;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
-import strategy.SenhaInvalidaMenorQue8Strategy;
 import strategy.SenhaInvalidaStrategy;
-import strategy.Strategy;
-import util.ValidaEmail;
 
 import javax.swing.JButton;
 import java.awt.Font;
@@ -86,6 +82,7 @@ public class TelaLogin extends JanelaPadrao{
 		campoEmail.setColumns(10);
 		
 		campoSenha = new JPasswordField();
+		campoSenha.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		campoSenha.setBounds(480, 346, 329, 61);
 		getContentPane().add(campoSenha);
 	}

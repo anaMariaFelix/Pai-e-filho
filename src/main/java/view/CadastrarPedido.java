@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.ModuleLayer.Controller;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 
 import javax.swing.ImageIcon;
@@ -21,7 +22,6 @@ import javax.swing.text.MaskFormatter;
 import controller.ClienteController;
 import controller.PedidoController;
 import dto.PedidoDTO;
-import model.Pedido;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.ClienteNaoExistenteStrategy;
 import strategy.EmailInvalidoStrategy;
@@ -162,8 +162,8 @@ public class CadastrarPedido extends JanelaPadrao {
 		getContentPane().add(campoEmail);
 
 		try {
-			MaskFormatter mascaraDeData = new MaskFormatter("(##) #####-####");
-			campoTelefone = new JFormattedTextField(mascaraDeData);
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##) #####-####");
+			campoTelefone = new JFormattedTextField(mascaraTelefone);
 			campoTelefone.setBounds(275, 275, 344, 36);
 
 			getContentPane().add(campoTelefone);
@@ -171,13 +171,17 @@ public class CadastrarPedido extends JanelaPadrao {
 
 			e.printStackTrace();
 		}
-
+		
+		OuvinteCampoTamanhoEValor ouviente = new OuvinteCampoTamanhoEValor();
 		campoValor = new JTextField();
 		campoValor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		campoValor.setColumns(10);
 		campoValor.setBounds(275, 529, 344, 34);
+		campoValor.addKeyListener(ouviente);
 		getContentPane().add(campoValor);
+		
 	}
+	
 
 	public void criarJcomboBox() {
 
@@ -262,6 +266,27 @@ public class CadastrarPedido extends JanelaPadrao {
 		scroll.setBounds(275, 432, 344, 59);
 		this.getContentPane().add(scroll);
 
+	}
+	
+	public class OuvinteCampoTamanhoEValor implements KeyListener {
+
+		public void keyTyped(KeyEvent e) {
+			char c = e.getKeyChar();
+			if (Character.isLetter(e.getKeyChar()) && c != ' ') {
+				e.consume();
+			}
+		}
+
+		public void keyPressed(KeyEvent e) {
+			char c = e.getKeyChar();
+			if (Character.isLetter(e.getKeyChar()) && c != ' ')
+				;
+
+		}
+
+		public void keyReleased(KeyEvent e) {
+
+		}
 	}
 
 	private class OuvinteBotaoVoltar implements ActionListener {

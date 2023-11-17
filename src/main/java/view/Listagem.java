@@ -51,6 +51,7 @@ public class Listagem extends JanelaPadrao{
 		getContentPane().add(servico);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setToolTipText("Voltar para Tela de Menu");
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnVoltar.setBounds(531, 523, 265, 68);
 		btnVoltar.addActionListener(new OuvinteBotaoVoltar(this));

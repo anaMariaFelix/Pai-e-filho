@@ -7,13 +7,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.ClienteController;
-import dao.ClienteDAO;
 import dto.ClienteDTO;
 import execoesPersonalizadas.EmailJaCadastradoException;
 import strategy.CPFInvalido;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
-import strategy.EmailJaExistenteStrategy;
 import strategy.Erros;
 import util.Constantes;
 import util.ValidaEmail;

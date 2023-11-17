@@ -12,13 +12,11 @@ import javax.swing.JTextField;
 
 import controller.AdministradorController;
 import dto.AdministradorDTO;
-import model.Administrador;
 import strategy.CamposNaoPreenchidosStrategy;
 import strategy.EmailInvalidoStrategy;
 import strategy.Erros;
 import strategy.SenhaInvalidaMenorQue8Strategy;
 import strategy.SenhasDiferentesStrategy;
-import strategy.Strategy;
 import util.ValidaEmail;
 
 import javax.swing.JPasswordField;

@@ -146,7 +146,10 @@ public class Servicos extends JanelaPadrao {
 
 			} else {
 
-				String servicoEditado = JOptionPane.showInputDialog(this.janela, "Digite o novo nome para o serviço");
+				String servicoAtual = ServicoController.getInstance().recuperarServicoPeloIndice(indice);
+				
+				String servicoEditado = (String) JOptionPane.showInputDialog(this.janela, "Digite o novo nome para o serviço",null,
+						JOptionPane.PLAIN_MESSAGE,null,null,servicoAtual);
 
 				if (servicoEditado != null) {
 					if (!servicoEditado.isEmpty()) {

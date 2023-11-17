@@ -6,7 +6,7 @@ public class Funcionario {
 
 	private String nome;
 	private String telefone;
-	private String email; //id
+	private String email;
 	private String cpf;
 	
 	public Funcionario(FuncionarioDTO funcionarioDTO) {

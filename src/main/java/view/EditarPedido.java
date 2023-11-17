@@ -22,8 +22,7 @@ public class EditarPedido {
 	public EditarPedido (PedidoDTO pedidoDTO) {
 		this.pedidoDTO = pedidoDTO;
 		
-		telaCadastrarPedido = new CadastrarPedido("listagem");
-		
+		telaCadastrarPedido = new CadastrarPedido(Constantes.LISTAGEM);
 		telaCadastrarPedido.getCadastrarPedido().setText("Editar Pedido");
 		
 		telaCadastrarPedido.getButtonSalvar().removeActionListener(telaCadastrarPedido.getOuvinteBotaoSalvar());
@@ -54,7 +53,7 @@ public class EditarPedido {
 			
 			if(e.getSource() == janela.getButtonVoltar()) {
 				this.janela.dispose();
-				new Listagem();
+				new ListagemPedido();
 		
 			}
 		}

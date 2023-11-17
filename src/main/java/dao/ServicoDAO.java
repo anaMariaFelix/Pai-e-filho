@@ -68,4 +68,9 @@ public class ServicoDAO implements ServicoDAOInterface{
 		
 	}
 
+	@Override
+	public String recuperarServicoPeloIndice(int indice) {
+		return BancoDeDados.getInstance().getTodosServicos().get(indice);
+	}
+
 }
