@@ -51,7 +51,6 @@ public class Mensageiro extends Thread{
 		run();
 	}
 	
-	
 	@Override
 	public void run() {
 

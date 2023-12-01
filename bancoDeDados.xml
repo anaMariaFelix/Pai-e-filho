@@ -2,14 +2,28 @@
 <bancoDeDados.BancoDeDados>
   <clientes>
     <dto.ClienteDTO>
-      <nome>ana linda</nome>
-      <telefone>11234567899</telefone>
+      <nome>Emerson</nome>
+      <telefone>44444444444</telefone>
       <email>eandrey4133@gmail.com</email>
-      <cpf>11993299408</cpf>
+      <cpf>70401600483</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>Andrey</nome>
+      <telefone>55555555555</telefone>
+      <email>eandrey413@gmail.com</email>
+      <cpf>70401600483</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
   </clientes>
-  <funcionarios/>
+  <funcionarios>
+    <dto.FuncionarioDTO>
+      <nome>Emerson</nome>
+      <telefone>99 999999999</telefone>
+      <email>asd@asd</email>
+      <cpf>70401600483</cpf>
+    </dto.FuncionarioDTO>
+  </funcionarios>
   <todosServicos>
     <string>PVC</string>
     <string>Letras</string>

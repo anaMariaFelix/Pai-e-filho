@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.ClienteController;
+import controller.EmailObserverController;
 import dto.ClienteDTO;
 import execoesPersonalizadas.EmailJaCadastradoException;
 import strategy.CPFInvalido;
@@ -65,7 +66,7 @@ public class EditarCliente {
 
 	}
 	
-	public String removerMacaraCampoCPF(JTextField cpf) {
+	public String removerMascaraCampoCPF(JTextField cpf) {
 		return cpf.getText().replace(".", "").replace("-", "").trim();
 	}
 	
@@ -84,7 +85,7 @@ public class EditarCliente {
 			String nome = janela.getCampoNome().getText();
 			String telefone = janela.getCampoTelefone().getText().replace("(", "").replace(")", "").replace("-", "").trim();
 			String email = janela.getCampoEmail().getText();
-			String cpf = removerMacaraCampoCPF(janela.getCampoCPF());
+			String cpf = removerMascaraCampoCPF(janela.getCampoCPF());
 			boolean notificacao = false;
 
 			if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || cpf.isEmpty()) {
@@ -103,12 +104,12 @@ public class EditarCliente {
 				
 				if (janela.getRadioButonSim().isSelected()) {
 					notificacao = true;
-
 				}
 				
 				ClienteDTO cliente = new ClienteDTO(nome,telefone,email,cpf,notificacao);
 
 				try {
+					EmailObserverController.getInstance().removerNotificado(clienteSemEdicao);
 					ClienteController.getInstance().removerCliente(clienteSemEdicao);
 					ClienteController.getInstance().salvarCliente(cliente);
 					
