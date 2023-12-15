@@ -46,15 +46,6 @@ public class ClienteController {
 		}
 	}
 
-
-	public ClienteDTO recuperarCliente(ClienteDTO cliente) throws ClienteNaoEncontradoException  {
-		ClienteDTO clienteDTO = ClienteDAO.getInstance().recuperarCliente(cliente.getEmail());
-		if(clienteDTO != null) {
-			return clienteDTO;
-		}
-		throw new ClienteNaoEncontradoException();
-
-	}
 	
 	public void removerCliente(ClienteDTO cliente) {
 		ClienteDAO.getInstance().removerClienteEditado(cliente);

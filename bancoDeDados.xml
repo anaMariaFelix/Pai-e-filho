@@ -2,9 +2,16 @@
 <bancoDeDados.BancoDeDados>
   <clientes>
     <dto.ClienteDTO>
-      <nome>ana linda</nome>
-      <telefone>11234567899</telefone>
-      <email>eandrey4133@gmail.com</email>
+      <nome>ana</nome>
+      <telefone>12112165156</telefone>
+      <email>anafelixcleuton@gmail.com</email>
+      <cpf>11993299408</cpf>
+      <notificacao>true</notificacao>
+    </dto.ClienteDTO>
+    <dto.ClienteDTO>
+      <nome>maria</nome>
+      <telefone>45465465455</telefone>
+      <email>anafelix0909@gmail.com</email>
       <cpf>11993299408</cpf>
       <notificacao>true</notificacao>
     </dto.ClienteDTO>
@@ -19,19 +26,9 @@
     <string>Corrimão</string>
     <string>Alambrado</string>
   </todosServicos>
-  <pedidos>
-    <dto.PedidoDTO>
-      <nomeCliente>ana linda</nomeCliente>
-      <emailCliente>ana@linda</emailCliente>
-      <telefone>11 111111111</telefone>
-      <servico>PVC</servico>
-      <descricao>ismael faça meu pedido caladinho, quem manda sou eu. seu bosta.</descricao>
-      <valor>50,00</valor>
-      <finalizado>Finalizado</finalizado>
-    </dto.PedidoDTO>
-  </pedidos>
+  <pedidos/>
   <administrador>
-    <nome>ana a maioral </nome>
+    <nome>ana</nome>
     <email>1@1</email>
     <senha>12345678</senha>
   </administrador>
