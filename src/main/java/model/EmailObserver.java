@@ -9,34 +9,44 @@ import iterator.Iterator;
 import observer.Observer;
 
 public class EmailObserver {
-	
+
 	private volatile static EmailObserver instance;
-	
+
 	private ArrayList<Observer> clientesObserver = new ArrayList();
 	private String mensagem;
-	
+
 	private EmailObserver() {
-		
+
 	}
-	
+
 	public static EmailObserver getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			synchronized (EmailObserver.class) {
-				if(instance == null) {
+				if (instance == null) {
 					instance = new EmailObserver();
 				}
 			}
 		}
 		return instance;
 	}
-	
+
 	public void adicionar(Observer cliente) {
 		clientesObserver.add(cliente);
 	}
-	
+
+	public void remover(String email) {
+		Iterator<Observer> clientes = new ConcretIterator(clientesObserver);
+		while (clientes.hasNext()) {
+			Cliente elemento = (Cliente) clientes.next();
+			if (elemento.getEmail().equals(email)) {
+				clientesObserver.remove(elemento);
+			}
+		}
+	}
+
 	public void notificacao() {
 		Iterator<Observer> clientes = new ConcretIterator(clientesObserver);
-		while(clientes.hasNext()) {
+		while (clientes.hasNext()) {
 			Cliente elemento = (Cliente) clientes.next();
 			elemento.update(this);
 		}
@@ -58,7 +68,5 @@ public class EmailObserver {
 	public void setClientesObserver(ArrayList<Observer> clientesObserver) {
 		this.clientesObserver = clientesObserver;
 	}
-	
-	
-	
+
 }

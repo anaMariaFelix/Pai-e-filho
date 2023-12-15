@@ -22,6 +22,8 @@ import iterator.ConcretIterator;
 import iterator.Iterator;
 import relatorio.Relatorio;
 import relatorio.RelatorioFactory;
+import strategy.Erros;
+import strategy.SemInformacao;
 import util.ButtonEditor;
 import util.ButtonRenderer;
 import util.Constantes;
@@ -77,7 +79,7 @@ public class ListagemCliente extends JanelaPadrao {
 
 		table.getColumn("Gerar Relatorio").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Gerar Relatorio").setCellEditor(new ButtonEditor(new JCheckBox()));
-		
+
 		table.getColumn("Enviar Email").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Enviar Email").setCellEditor(new ButtonEditor(new JCheckBox()));
 
@@ -128,7 +130,7 @@ public class ListagemCliente extends JanelaPadrao {
 			btEmail.setBackground(new Color(39, 200, 86));
 			btEmail.addActionListener(new OuvinteBotaoEmail(this, cliente));
 			linha[6] = btEmail;
-			
+
 			JButton btExcluir = new JButton("Excluir");
 			btExcluir.setBackground(Color.red);
 			btExcluir.addActionListener(new OuvinteBotaoExcluir(this, cliente));
@@ -275,9 +277,14 @@ public class ListagemCliente extends JanelaPadrao {
 			String conteudoEmailString = JOptionPane.showInputDialog("Informe o conteúdo do Email.");
 			Mensageiro.getInstance().setEmailCliente(cliente.getEmail());
 			Mensageiro.getInstance().setMensagem(conteudoEmailString);
-			JOptionPane.showMessageDialog(null, "O email está sendo enviado.");
-			Mensageiro.getInstance().start();
-			
+			if (conteudoEmailString != null && !conteudoEmailString.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "O email está sendo enviado.");
+				Mensageiro.getInstance().start();
+			}
+			if(conteudoEmailString.isEmpty()) {
+				Erros.setStrategy(new SemInformacao());
+				Erros.lancarErro();
+			}
 
 		}
 

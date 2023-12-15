@@ -8,6 +8,7 @@ import iterator.ConcretIterator;
 import iterator.Iterator;
 import model.Cliente;
 import model.EmailObserver;
+import observer.Observer;
 
 public class EmailObserverController {
 	
@@ -40,6 +41,10 @@ public class EmailObserverController {
 				EmailObserver.getInstance().adicionar(new Cliente(cliente));
 			}
 		}
+	}
+	
+	public void removerNotificado(ClienteDTO cliente) {
+		EmailObserver.getInstance().remover(cliente.getEmail());
 	}
 	
 	
